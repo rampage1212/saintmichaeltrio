@@ -10,9 +10,12 @@
     "style": "pretty-quick --staged"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "next": "10.2.3",
+    "nprogress": "^0.2.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "styled-jsx": "^3.4.4"
   },
   "devDependencies": {
     "@types/node": "^15.12.1",
