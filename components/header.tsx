@@ -55,10 +55,12 @@ function Link({ href, children }: LinkProps): JSX.Element {
 }
 
 export default function Header(): JSX.Element {
+  const { pathname } = useRouter();
+
   return (
     <header>
       <NextLink href='/'>
-        <a className='header'><h1>Saint Michael Trio</h1></a>
+        <a className={cn('header', { active: pathname === '/' })}><h1>Saint Michael Trio</h1></a>
       </NextLink>
       <nav>
         <ul>
