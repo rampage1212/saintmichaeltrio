@@ -66,17 +66,17 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         }
 
         h2 {
-          font-weight: 400;
+          font-size: 1.2rem;
           margin: 1rem 0;
         }
 
-        main.wrapper {
-          max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 0 24px;
+        .wrapper {
+          max-width: calc(var(--page-width) + 2 * 1rem);
+          padding: 0 1rem;
           margin: auto;
         }
 
-        main.wrapper > h2:first-child {
+        .wrapper > h2:first-child {
           margin-top: 0;
         }
         

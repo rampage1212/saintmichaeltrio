@@ -34,10 +34,10 @@ function Concert({ date, name, venue }: ConcertProps): JSX.Element {
 export default function Concerts(): JSX.Element {
   return (
     <Page name='Concerts'>
+      <header role='banner'>
+        <p className='wrapper'>Due to COVID-19 restrictions, we are no longer holding in-person concerts. We will resume live performances as health guidelines permit.</p>
+      </header>
       <main className='wrapper'>
-        <header role='banner'>
-          Due to COVID-19 restrictions, we are no longer holding in-person concerts. We will resume live performances as health guidelines permit.
-        </header>
         <h2>Past concerts</h2>
         <ul>
           <Concert
@@ -905,8 +905,8 @@ export default function Concerts(): JSX.Element {
           border: 1px solid var(--accents-2);
           background: var(--accents-1);
           color: var(--accents-5);
-          margin: 0 0 1.5rem;
-          padding: 1.5rem;
+          margin: 1.5rem 0;
+          padding: 1.5rem 0;
         }
       `}</style>
     </Page>

@@ -45,7 +45,7 @@ export default function About(): JSX.Element {
       </main>
       <style jsx>{`
         article:first-child > h2:first-child {
-          margin-top: 0;
+          margin: 0 0 -0.5rem;
         }
       `}</style>
     </Page>
