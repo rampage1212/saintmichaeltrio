@@ -115,7 +115,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
           --page-width: 800px;
 
-          --primary: #0070f3;
+          --primary: #c84702;
           --on-primary: #fff;
           --background: #fff;
           --on-background: #000;
@@ -137,7 +137,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         }
 
         .dark {
-          --primary: #5aa6ff;
+          --primary: #c84702;
           --on-primary: #000;
           --background: #000;
           --on-background: #fff;
@@ -155,7 +155,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           --shadow-medium: 0 0 0 1px var(--accents-2);
           --shadow-large: 0 0 0 1px var(--accents-2);
 
-          --selection: #f81ce5;
+          --selection: #c84702;
         }
       `}</style>
     </ThemeContext.Provider>
