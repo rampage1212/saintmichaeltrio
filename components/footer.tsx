@@ -131,26 +131,24 @@ export default function Footer(): JSX.Element {
     <footer>
       <nav role='navigation'>
         <Group label='Socials'>
-          <Link href='https://indiehackers.com/nicholaschiang'>
-            IndieHackers
-          </Link>
-          <Link href='https://instagram.com/niicholaschiiang'>Instagram</Link>
-          <Link href='https://facebook.com/niicholaschiiang'>Facebook</Link>
-          <Link href='https://linkedin.com/in/nicholaschiang'>LinkedIn</Link>
-          <Link href='https://twitter.com/niicholaschiang'>Twitter</Link>
-          <Link href='https://github.com/nicholaschiang'>GitHub</Link>
+          <Link href='https://facebook.com/saintmichaeltrio'>Facebook</Link>
+          <Link href='https://youtube.com/watch?v=XiFeG3_ZLAI&list=PLTDzG3mNIQ5JfGnczTADFc9kpHDGPSjc4'>YouTube</Link>
         </Group>
-        <Group label='Portfolio'>
-          <Link href='/web'>Web Development</Link>
-          <Link href='/'>Photography</Link>
-          <Link href='/film'>Filmmaking</Link>
-          <Link href='/research'>Research</Link>
+        <Group label='Listen'>
+          <Link href='https://open.spotify.com/artist/1z1XyquAZf9KoCk9GTUMIF'>Spotify</Link>
+          <Link href='https://itunes.apple.com/us/artist/saint-michael-trio/477677579'>Apple Music</Link>
+          <Link href='https://music.youtube.com/channel/UCB-XygzAOUOCaUo43gMZC4A'>YouTube Music</Link>
+          <Link href='https://iheart.com/artist/saint-michael-trio-31431075/?autoplay=true'>iHeart Radio</Link>
+          <Link href='https://deezer.com/us/artist/12730889?autoplay=true'>Deezer</Link>
+        </Group>
+        <Group label='Read'>
+          <Link href='/'>Home</Link>
+          <Link href='/about'>About</Link>
+          <Link href='/press'>Press</Link>
         </Group>
         <Group label='Useful Links'>
-          <Link href='/'>About</Link>
-          <Link href='mailto:nicholas@tutorbook.org'>Contact</Link>
-          <Link href='/resume.pdf'>Resume</Link>
-          <Link href='https://github.com/nicholaschiang/website'>Source</Link>
+          <Link href='mailto:boxoffice@saintmichaeltrio.com'>Contact</Link>
+          <Link href='https://github.com/nicholaschiang/st-michael-trio'>Source</Link>
         </Group>
       </nav>
       <section>
