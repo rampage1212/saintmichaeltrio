@@ -132,10 +132,11 @@ export default function Footer(): JSX.Element {
       <nav role='navigation'>
         <Group label='Socials'>
           <Link href='https://facebook.com/saintmichaeltrio'>Facebook</Link>
-          <Link href='https://youtube.com/watch?v=XiFeG3_ZLAI&list=PLTDzG3mNIQ5JfGnczTADFc9kpHDGPSjc4'>YouTube</Link>
+          <Link href='https://youtube.com/user/presentationpartners/videos'>YouTube</Link>
         </Group>
         <Group label='Listen'>
           <Link href='https://open.spotify.com/artist/1z1XyquAZf9KoCk9GTUMIF'>Spotify</Link>
+          <Link href='https://youtube.com/watch?v=XiFeG3_ZLAI&list=PLTDzG3mNIQ5JfGnczTADFc9kpHDGPSjc4'>YouTube</Link>
           <Link href='https://itunes.apple.com/us/artist/saint-michael-trio/477677579'>Apple Music</Link>
           <Link href='https://music.youtube.com/channel/UCB-XygzAOUOCaUo43gMZC4A'>YouTube Music</Link>
           <Link href='https://iheart.com/artist/saint-michael-trio-31431075/?autoplay=true'>iHeart Radio</Link>
