@@ -13,7 +13,13 @@ export default function Link({ href, children }: LinkProps): JSX.Element {
   return (
     <li>
       <NextLink href={href}>
-        <a className={cn('link', { active: pathname === href })}>{children}</a>
+        <a 
+          rel={!href.startsWith('/') ? 'noopener noreferrer' : undefined}
+          target={!href.startsWith('/') ? '_blank' : undefined}
+          className={cn({ active: pathname === href })}
+        >
+          {children}
+        </a>
       </NextLink>
       <style jsx>{`
         li {
