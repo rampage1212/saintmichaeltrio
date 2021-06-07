@@ -68,8 +68,8 @@ function Album({ cover, title, amazon, itunes, reviews, description }: AlbumProp
           <h2>{title}</h2>
           <p>{description}</p>
           {reviews.map(({ qoute, cite }) => (
-            <figure>
-              <blockqoute>{qoute}</blockqoute>
+            <figure key={cite.toLowerCase().split(' ').join('-')}>
+              <blockquote>{qoute}</blockquote>
               <figcaption>—<cite>{cite}</cite></figcaption>
             </figure>
           ))}
@@ -108,11 +108,15 @@ function Album({ cover, title, amazon, itunes, reviews, description }: AlbumProp
           color: var(--accents-5);
         }
 
-        blockqoute::before {
+        blockquote {
+          margin: 0;
+        }
+
+        blockquote::before {
           content: '“';
         }
 
-        blockqoute::after {
+        blockquote::after {
           content: '”';
         }
 

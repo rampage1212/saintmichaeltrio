@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "style": "pretty-quick --staged",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
-    "style": "pretty-quick --staged"
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -24,6 +25,7 @@
     "@types/react": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^12.3.1",
@@ -37,7 +39,9 @@
     "husky": "^6.0.0",
     "prettier": "^2.3.1",
     "pretty-quick": "^3.1.0",
+    "serve": "^11.3.2",
     "typescript": "^4.3.2",
+    "webpack-bundle-analyzer": "^4.4.2",
     "ytdl-core": "^4.8.2"
   }
 }
