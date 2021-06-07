@@ -50,9 +50,10 @@ interface AlbumProps {
   itunes?: string;
   reviews: Review[];
   description: string;
+  priority?: boolean;
 }
 
-function Album({ cover, title, amazon, itunes, reviews, description }: AlbumProps): JSX.Element {
+function Album({ cover, title, amazon, itunes, reviews, description, priority }: AlbumProps): JSX.Element {
   return (
     <li>
       <div className='wrapper'>
@@ -60,6 +61,7 @@ function Album({ cover, title, amazon, itunes, reviews, description }: AlbumProp
           <Image
             src={`/albums/${cover}`}
             alt={`${title} Album Cover`}
+            priority={priority}
             height={360}
             width={360}
           />
@@ -139,6 +141,7 @@ export default function Albums(): JSX.Element {
       <main>
         <ul>
           <Album
+            priority
             cover='music-of-americas.jpg'
             title='Music of Americas'
             amazon='https://www.amazon.com/gp/product/B073W1RVGS/ref=dm_ws_sp_ps_dp'
@@ -151,6 +154,7 @@ export default function Albums(): JSX.Element {
             ]}
           />
           <Album
+            priority
             cover='french-fusion.jpg'
             title='French Fusion'
             amazon='http://www.amazon.com/gp/product/B00761PGGY/ref=dm_dp_cdp?ie=UTF8&s=music&qid=1335846168&sr=1-1'
