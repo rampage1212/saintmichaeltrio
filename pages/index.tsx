@@ -1,10 +1,29 @@
-import { Fade } from 'react-awesome-reveal';
+import { ReactNode, createContext, useContext, useMemo } from 'react';
+import { FadeProps } from 'react-awesome-reveal';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 import Figure from 'components/figure';
 import Page from 'components/page';
 
+// Temporary fix for showing children when dynamically loading.
+// @see {@link https://github.com/vercel/next.js/issues/7906}
+const FadeLoadingContext = createContext<ReactNode>(<></>);
+const Fade = dynamic<FadeProps>(
+  () => import('react-awesome-reveal').then(async (m) => {
+    await new Promise((res, rej) => setTimeout(res, 10000));
+    return m.Fade;
+  }),
+  { loading: () => useContext(FadeLoadingContext) }
+);
+
 export default function Home(): JSX.Element {
+  const banner = useMemo(() => ([
+    <span>{'The Saint Michael Trio'}<br /></span>,
+    <span>{'is Silicon Valley’s update'}<br /></span>,
+    <span>{'to the classical music scene.'}</span>,
+  ]), []);
+
   return (
     <Page name='Home'>
       <main>
@@ -19,17 +38,9 @@ export default function Home(): JSX.Element {
         </Figure>
         <section className='banner'>
           <h1>
-            <Fade cascade triggerOnce>
-              <span>
-                The Saint Michael Trio
-                <br />
-              </span>
-              <span>
-                is Silicon Valley’s update
-                <br />
-              </span>
-              <span>to the classical music scene.</span>
-            </Fade>
+            <FadeLoadingContext.Provider value={banner}>
+              <Fade cascade>{banner}</Fade>
+            </FadeLoadingContext.Provider>
           </h1>
         </section>
         <section className='about'>
