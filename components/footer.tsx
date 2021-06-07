@@ -21,14 +21,12 @@ function Link({ href, children }: LinkProps): JSX.Element {
       </NextLink>
       <style jsx>{`
         li {
-          padding: 0;
-          margin: 0;
+          padding: 8px 0;
         }
 
         a {
           cursor: pointer;
           font-size: 14px;
-          line-height: 14px;
           text-decoration: none;
           color: var(--accents-5);
           transition: color 0.2s ease 0s;
@@ -86,7 +84,7 @@ function Group({ label, children }: GroupProps): JSX.Element {
         h2 {
           font-weight: 400;
           font-size: 14px;
-          margin: 0;
+          margin: 8px 0;
         }
 
         @media (max-width: 960px) {
@@ -183,6 +181,7 @@ export default function Footer(): JSX.Element {
           border-top: 1px solid var(--accents-2);
           font-family: var(--font-sans);
           padding: 36px 24px 24px;
+          line-height: 1;
         }
 
         nav {

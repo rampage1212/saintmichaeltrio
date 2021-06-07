@@ -55,8 +55,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
         html,
         body {
-          font-size: 20px;
-          line-height: 35px;
+          font-size: 22px;
+          line-height: 1.45;
           font-family: var(--font-serif);
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: subpixel-antialiased;
@@ -65,15 +65,23 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           color: var(--on-background);
         }
 
-        button.reset {
-          border: unset;
-          background: unset;
-          padding: unset;
-          margin: unset;
-          font: unset;
-          text-align: unset;
-          appearance: unset;
-          cursor: pointer;
+        h2 {
+          font-weight: 400;
+          margin: 1rem 0;
+        }
+
+        main.wrapper {
+          max-width: calc(var(--page-width) + 2 * 24px);
+          padding: 24px;
+          margin: auto;
+        }
+
+        main.wrapper > h2:first-child {
+          margin-top: 0;
+        }
+        
+        p {
+          margin: 1rem 0;
         }
 
         a {
@@ -90,34 +98,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         a.active {
           color: var(--on-background);
           cursor: not-allowed;
-        }
-
-        .nowrap {
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
-
-        .loading {
-          background-image: linear-gradient(
-            270deg,
-            var(--accents-1),
-            var(--accents-2),
-            var(--accents-2),
-            var(--accents-1)
-          );
-          background-size: 400% 100%;
-          -webkit-animation: loadingAnimation 8s ease-in-out infinite;
-          animation: loadingAnimation 8s ease-in-out infinite;
-        }
-
-        @keyframes loadingAnimation {
-          0% {
-            background-position: 200% 0;
-          }
-          to {
-            background-position: -200% 0;
-          }
         }
       `}</style>
       <style jsx global>{`

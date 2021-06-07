@@ -50,18 +50,13 @@ export default function Home(): JSX.Element {
       <style jsx>{`
         main > :global(figure) {
           max-width: calc(var(--page-width) + 2 * 24px);
-          margin: 24px auto 48px;
           padding: 0 24px;
         }
 
         section.about {
           max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 24px;
-          margin: auto;
-        }
-
-        p {
-          margin: 24px 0;
+          margin: 2.5rem auto;
+          padding: 0 24px;
         }
 
         a::after {
@@ -77,15 +72,15 @@ export default function Home(): JSX.Element {
 
         section.banner {
           background: var(--primary);
+          margin: 2.5rem 0;
         }
 
         section.banner h1 {
-          font-size: 48px;
+          font-size: 2.5rem;
           font-weight: 400;
-          line-height: 72px;
           color: var(--on-primary);
           max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 48px 24px;
+          padding: 2.5rem 24px;
           margin: auto;
         }
       `}</style>

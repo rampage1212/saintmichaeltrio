@@ -19,6 +19,7 @@ export default function Header(): JSX.Element {
         header {
           width: 100%;
           max-width: calc(var(--page-width) + 2 * 24px);
+          line-height: 1;
           margin: 0 auto;
         }
 

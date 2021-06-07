@@ -20,14 +20,6 @@ function Article({ url, title, paper }: ArticleProps): JSX.Element {
         dt {
           color: var(--on-background);
         }
-
-        dt::before {
-          content: '“';
-        }
-
-        dt::after {
-          content: '”';
-        }
       `}</style>
     </a>
   );
@@ -36,7 +28,7 @@ function Article({ url, title, paper }: ArticleProps): JSX.Element {
 export default function Press(): JSX.Element {
   return (
     <Page name='Press'>
-      <main>
+      <main className='wrapper'>
         <h2>In the press</h2>
         <dl>
           <Article
@@ -187,17 +179,6 @@ export default function Press(): JSX.Element {
         </dl>
       </main>
       <style jsx>{`
-        h2 {
-          font-weight: 400;
-          margin: 0 0 24px;
-        }
-
-        main {
-          max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 24px;
-          margin: auto;
-        }
-
         dl {
           columns: 2;
           column-gap: 48px;

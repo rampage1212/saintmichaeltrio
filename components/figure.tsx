@@ -20,7 +20,7 @@ export default function Figure({ src, width, height, priority, alt, children }: 
       <style jsx>{`
         figure {
           text-align: center;
-          margin: 36px auto 24px;
+          margin: 1.5rem auto 1rem;
         }
 
         figure > :global(div) {
@@ -28,7 +28,9 @@ export default function Figure({ src, width, height, priority, alt, children }: 
         }
 
         figure > figcaption {
+          font-size: 0.9rem;
           font-style: italic;
+          margin-top: 0.05rem;
           color: var(--accents-5);
         }
       `}</style>

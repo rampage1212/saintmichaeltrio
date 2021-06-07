@@ -34,7 +34,7 @@ function Concert({ date, name, venue }: ConcertProps): JSX.Element {
 export default function Concerts(): JSX.Element {
   return (
     <Page name='Concerts'>
-      <main>
+      <main className='wrapper'>
         <h2>Past concerts</h2>
         <ul>
           <Concert
@@ -890,17 +890,6 @@ export default function Concerts(): JSX.Element {
         </ul>
       </main>
       <style jsx>{`
-        h2 {
-          font-weight: 400;
-          margin: 0 0 24px;
-        }
-
-        main {
-          max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 24px;
-          margin: auto;
-        }
-
         ul {
           columns: 2;
           column-gap: 48px;

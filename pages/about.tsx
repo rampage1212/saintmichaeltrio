@@ -4,7 +4,7 @@ import Page from 'components/page';
 export default function About(): JSX.Element {
   return (
     <Page name='About'>
-      <main>
+      <main className='wrapper'>
         <article>
           <h2>About Saint Mike</h2>
           <p>The Saint Michael Trio is hailed as Silicon Valley’s update to the classical music scene. Established in 2007, they are considered California’s premiere piano trio, and their recordings inspire ongoing accolades in the national press. They receive special praise for making their concerts interesting, accessible, and often funny.</p>
@@ -44,19 +44,8 @@ export default function About(): JSX.Element {
         </article>
       </main>
       <style jsx>{`
-        h2 {
-          font-weight: 400;
-          margin: 0 0 24px;
-        }
-
-        p {
-          margin: 24px 0;
-        }
-
-        main {
-          max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 24px;
-          margin: auto;
+        article:first-child > h2:first-child {
+          margin-top: 0;
         }
       `}</style>
     </Page>
