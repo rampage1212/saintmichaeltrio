@@ -31,11 +31,11 @@ function Link({ href, children }: LinkProps): JSX.Element {
       </NextLink>
       <style jsx>{`
         li {
-          padding: 4px 0;
+          padding: 0.25rem 0;
         }
 
         a {
-          font-size: 14px;
+          font-size: var(--link-size);
         }
       `}</style>
     </li>
@@ -74,7 +74,7 @@ function Group({ label, children }: GroupProps): JSX.Element {
         }
 
         div:not(:last-of-type) {
-          margin-right: 24px;
+          margin-right: 1rem;
         }
 
         ul {
@@ -85,8 +85,8 @@ function Group({ label, children }: GroupProps): JSX.Element {
 
         h2 {
           font-weight: 400;
-          font-size: 14px;
-          margin: 8px 0;
+          font-size: var(--link-size);
+          margin: 0.25rem 0;
         }
 
         @media (max-width: 960px) {
@@ -96,8 +96,8 @@ function Group({ label, children }: GroupProps): JSX.Element {
           }
 
           ul {
-            padding-left: 12px;
-            padding-bottom: 12px;
+            padding-left: 0.5rem;
+            padding-bottom: 0.5rem;
             display: none;
           }
 
@@ -183,7 +183,8 @@ export default function Footer(): JSX.Element {
           background: var(--accents-1);
           border-top: 1px solid var(--accents-2);
           font-family: var(--font-sans);
-          padding: 36px 24px 24px;
+          padding: 1.5rem 1rem 1rem;
+          margin-top: 2rem;
           line-height: 1;
         }
 
@@ -201,12 +202,12 @@ export default function Footer(): JSX.Element {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 24px 0;
+          padding: 1rem 0;
         }
 
         span {
           color: var(--accents-5);
-          font-size: 14px;
+          font-size: var(--link-size);
         }
 
         @media (max-width: 960px) {
@@ -220,7 +221,7 @@ export default function Footer(): JSX.Element {
           }
 
           span {
-            margin-bottom: 24px;
+            margin-bottom: 1rem;
           }
         }
       `}</style>

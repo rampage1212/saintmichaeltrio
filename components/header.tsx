@@ -1,9 +1,65 @@
-import Link from 'components/link';
+import NextLink from 'next/link';
+import cn from 'classnames';
+import { useRouter } from 'next/router';
+
+interface LinkProps {
+  href: string;
+  children: string;
+}
+
+function Link({ href, children }: LinkProps): JSX.Element {
+  const { pathname } = useRouter();
+
+  return (
+    <li>
+      <NextLink href={href}>
+        <a 
+          rel={!href.startsWith('/') ? 'noopener noreferrer' : undefined}
+          target={!href.startsWith('/') ? '_blank' : undefined}
+          className={cn({ active: pathname === href })}
+        >
+          {children}
+        </a>
+      </NextLink>
+      <style jsx>{`
+        li {
+          display: inline;
+          float: none;
+          margin: 0 0.5rem;
+        }
+
+        a {
+          font-size: var(--link-size);
+        }
+
+        a.active {
+          color: var(--on-background);
+        }
+
+        @media (max-width: 800px) {
+          li {
+            white-space: nowrap;
+          }
+
+          li:first-of-type {
+            margin-left: 0;
+          }
+
+          li:last-of-type {
+            margin-right: 1rem;
+          }
+        }
+      `}</style>
+    </li>
+  );
+}
 
 export default function Header(): JSX.Element {
   return (
     <header>
-      <h1>Saint Michael Trio</h1>
+      <NextLink href='/'>
+        <a className='header'><h1>Saint Michael Trio</h1></a>
+      </NextLink>
       <nav>
         <ul>
           <Link href='/'>Home</Link>
@@ -18,23 +74,27 @@ export default function Header(): JSX.Element {
       <style jsx>{`
         header {
           width: 100%;
-          max-width: calc(var(--page-width) + 2 * 24px);
+          max-width: calc(var(--page-width) + 2 * 1rem);
+          margin: 2rem auto 1.5rem;
           line-height: 1;
-          margin: 0 auto;
         }
 
-        h1 {
-          font-size: 48px;
+        a.header {
+          text-decoration: none;
+          color: var(--on-background);
+        }
+
+        a.header > h1 {
+          font-size: 2rem;
           font-weight: 400;
           text-align: center;
-          padding: 48px 24px 24px;
-          margin: 0;
+          margin: 1rem 0;
         }
 
         nav {
           display: flex;
           align-items: center;
-          padding: 0 24px;
+          padding: 0 1rem;
           justify-content: center;
           font-family: var(--font-sans);
         }

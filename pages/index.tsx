@@ -48,9 +48,10 @@ export default function Home(): JSX.Element {
         </section>
       </main>
       <style jsx>{`
-        main > :global(figure) {
+        main > :global(figure:first-child) {
           max-width: calc(var(--page-width) + 2 * 24px);
           padding: 0 24px;
+          margin-top: 0;
         }
 
         section.about {

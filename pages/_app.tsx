@@ -55,7 +55,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
         html,
         body {
-          font-size: 22px;
+          font-size: 20px;
           line-height: 1.45;
           font-family: var(--font-serif);
           text-rendering: optimizeLegibility;
@@ -72,7 +72,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
         main.wrapper {
           max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 24px;
+          padding: 0 24px;
           margin: auto;
         }
 
@@ -108,6 +108,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
+          --link-size: 0.7rem;
           --page-width: 800px;
 
           --primary: #c84702;
