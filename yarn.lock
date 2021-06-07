@@ -3144,6 +3144,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"m3u8stream@npm:^0.8.3":
+  version: 0.8.4
+  resolution: "m3u8stream@npm:0.8.4"
+  dependencies:
+    miniget: ^4.0.0
+    sax: ^1.2.4
+  checksum: 39017b0653ee4e6e44eae71f061ecb1016b92235c3abe4351a187e9b1ff179e8d92218f6e42bceda5ac0118c98e1d0391947f5ee0c50c87e7c8b6a1aa5a3e596
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^3.0.2":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -3227,6 +3237,13 @@ fsevents@~2.3.1:
   version: 2.1.0
   resolution: "mimic-fn@npm:2.1.0"
   checksum: f7d2d7febe3d7dd71da0700b1d455ec6c951a96b463ffcc303c93771b9fe4e45318152ea677c241505b19b39e41d906e5052cfb382d59a44bdb6d3d57f8b467b
+  languageName: node
+  linkType: hard
+
+"miniget@npm:^4.0.0":
+  version: 4.2.1
+  resolution: "miniget@npm:4.2.1"
+  checksum: cd9304bfaeff761b1ad533fbdbbf810fff3fe3bc0545510181ac3c70fc2a72ab485c7119a02a6b45732307c25032e0370ec1697d2e9162e8a6ed6c1d29545a0c
   languageName: node
   linkType: hard
 
@@ -4542,6 +4559,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"sax@npm:^1.1.3, sax@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "sax@npm:1.2.4"
+  checksum: 9d7668d69105e89e2c1a4b2fdc12c72e1a2f78b825f7b4a8a2ea5cdfebf70920bd17715bed55264c3b3959616a0695f8ad2d098bf6944fbd0953ee9c695dceef
+  languageName: node
+  linkType: hard
+
 "scheduler@npm:^0.20.2":
   version: 0.20.2
   resolution: "scheduler@npm:0.20.2"
@@ -4804,6 +4828,7 @@ resolve@^2.0.0-next.3:
     react-dom: 17.0.2
     styled-jsx: ^3.4.4
     typescript: ^4.3.2
+    ytdl-core: ^4.8.2
   languageName: unknown
   linkType: soft
 
@@ -5546,5 +5571,16 @@ typescript@^4.3.2:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 096c3b40beb2804659539be1605a35c58eb0c85285f94b77b3e924f42ee265c1a40bf9f4153770039517146b469a964d51742395f35ca8135fc9f7e4982b785d
+  languageName: node
+  linkType: hard
+
+"ytdl-core@npm:^4.8.2":
+  version: 4.8.2
+  resolution: "ytdl-core@npm:4.8.2"
+  dependencies:
+    m3u8stream: ^0.8.3
+    miniget: ^4.0.0
+    sax: ^1.1.3
+  checksum: ecd5490e4eab314023121a68b39f731d1338476d37448d5ad3689c33e639b4e4d0e7a88af4665758a2c4640484f18c4bc8b207b07c8202250d9368fbc84ef172
   languageName: node
   linkType: hard
