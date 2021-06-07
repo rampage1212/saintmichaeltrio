@@ -1,29 +1,23 @@
-import { ReactNode, createContext, useContext, useMemo } from 'react';
-import { FadeProps } from 'react-awesome-reveal';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 import Figure from 'components/figure';
 import Page from 'components/page';
 
-// Temporary fix for showing children when dynamically loading.
-// @see {@link https://github.com/vercel/next.js/issues/7906}
-const FadeLoadingContext = createContext<ReactNode>(<></>);
-const Fade = dynamic<FadeProps>(
-  () => import('react-awesome-reveal').then(async (m) => {
-    await new Promise((res, rej) => setTimeout(res, 10000));
-    return m.Fade;
-  }),
-  { loading: () => useContext(FadeLoadingContext) }
+const banner = [
+  <span key='trio'>{'The Saint Michael Trio'}<br /></span>,
+  <span key='valley'>{'is Silicon Valley’s update'}<br /></span>,
+  <span key='music'>{'to the classical music scene.'}</span>,
+];
+
+// TODO: Replace this `any` with the actual `FadeProps` type.
+// @see {@link https://github.com/morellodev/react-awesome-reveal/issues/79}
+const Fade = dynamic<any>(
+  () => import('react-awesome-reveal').then((m) => m.Fade),
+  { loading: () => <>{banner}</> }
 );
 
 export default function Home(): JSX.Element {
-  const banner = useMemo(() => ([
-    <span>{'The Saint Michael Trio'}<br /></span>,
-    <span>{'is Silicon Valley’s update'}<br /></span>,
-    <span>{'to the classical music scene.'}</span>,
-  ]), []);
-
   return (
     <Page name='Home'>
       <main>
@@ -37,11 +31,7 @@ export default function Home(): JSX.Element {
           Robin Sharp, violin; Russell Hancock, piano; Michel Flexer, cello
         </Figure>
         <section className='banner'>
-          <h1>
-            <FadeLoadingContext.Provider value={banner}>
-              <Fade cascade>{banner}</Fade>
-            </FadeLoadingContext.Provider>
-          </h1>
+          <h1><Fade cascade triggerOnce>{banner}</Fade></h1>
         </section>
         <section className='about'>
           <p>
