@@ -30,6 +30,7 @@ export default function Header({ page }: HeaderProps): JSX.Element {
 
         h1 {
           font-size: 48px;
+          font-weight: 400;
           text-align: center;
           padding: 48px 24px 24px;
           margin: 0;

@@ -28,16 +28,10 @@ export default function Page({ name, children }: PageProps): JSX.Element {
       </Head>
       <div>
         <Header />
-        <main>{children}</main>
+        {children}
         <style jsx>{`
           div {
             min-height: 100vh;
-          }
-
-          main {
-            max-width: calc(var(--page-width) + 2 * 24px);
-            padding: 24px;
-            margin: auto;
           }
         `}</style>
       </div>

@@ -76,6 +76,22 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           cursor: pointer;
         }
 
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          color: var(--accents-5);
+          transition: color 0.2s ease 0s;
+        } 
+
+        a:hover {
+          color: var(--foreground);
+        }
+
+        a.active {
+          color: var(--foreground);
+          cursor: not-allowed;
+        }
+
         .nowrap {
           overflow: hidden;
           white-space: nowrap;
@@ -138,7 +154,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
         .dark {
           --primary: #c84702;
-          --on-primary: #000;
+          --on-primary: #fff;
           --background: #000;
           --on-background: #fff;
           --error: #cf6679;

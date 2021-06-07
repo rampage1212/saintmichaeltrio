@@ -13,7 +13,7 @@ export default function Link({ href, children }: LinkProps): JSX.Element {
   return (
     <li>
       <NextLink href={href}>
-        <a className={cn({ active: pathname === href })}>{children}</a>
+        <a className={cn('link', { active: pathname === href })}>{children}</a>
       </NextLink>
       <style jsx>{`
         li {
@@ -23,20 +23,7 @@ export default function Link({ href, children }: LinkProps): JSX.Element {
         }
 
         a {
-          cursor: pointer;
           font-size: 14px;
-          text-decoration: none;
-          color: var(--accents-5);
-          transition: color 0.2s ease 0s;
-        }
-
-        a:hover {
-          color: var(--foreground);
-        }
-
-        a.active {
-          color: var(--foreground);
-          cursor: not-allowed;
         }
 
         @media (max-width: 800px) {
