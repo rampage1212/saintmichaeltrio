@@ -20,14 +20,26 @@ export default function Home(): JSX.Element {
         <section className='banner'>
           <h1>
             <Fade cascade triggerOnce>
-              <span>The Saint Michael Trio<br /></span>
-              <span>is Silicon Valley’s update<br /></span>
+              <span>
+                The Saint Michael Trio
+                <br />
+              </span>
+              <span>
+                is Silicon Valley’s update
+                <br />
+              </span>
               <span>to the classical music scene.</span>
             </Fade>
           </h1>
         </section>
         <section className='about'>
-          <p>The Saint Michael Trio is hailed as Silicon Valley’s update to the classical music scene. Established in 2007, they are considered California’s premiere piano trio, and their recordings inspire ongoing accolades in the national press. They receive special praise for making their concerts interesting, accessible, and often funny.</p>
+          <p>
+            The Saint Michael Trio is hailed as Silicon Valley’s update to the
+            classical music scene. Established in 2007, they are considered
+            California’s premiere piano trio, and their recordings inspire
+            ongoing accolades in the national press. They receive special praise
+            for making their concerts interesting, accessible, and often funny.
+          </p>
           <p>
             <Link href='/about'>
               <a>Read more about us and our story</a>
@@ -41,7 +53,7 @@ export default function Home(): JSX.Element {
           margin: 24px auto 48px;
           padding: 0 24px;
         }
-        
+
         section.about {
           max-width: calc(var(--page-width) + 2 * 24px);
           padding: 24px;

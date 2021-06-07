@@ -84,11 +84,11 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         } 
 
         a:hover {
-          color: var(--foreground);
+          color: var(--on-background);
         }
 
         a.active {
-          color: var(--foreground);
+          color: var(--on-background);
           cursor: not-allowed;
         }
 

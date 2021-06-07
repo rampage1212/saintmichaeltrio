@@ -35,7 +35,7 @@ function Link({ href, children }: LinkProps): JSX.Element {
         }
 
         a:hover {
-          color: var(--foreground);
+          color: var(--on-background);
         }
       `}</style>
     </li>
