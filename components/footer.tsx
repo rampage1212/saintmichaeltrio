@@ -1,4 +1,6 @@
 import NextLink from 'next/link';
+import cn from 'classnames';
+import { useRouter } from 'next/router';
 
 import DarkIcon from 'components/icons/dark';
 import LightIcon from 'components/icons/light';
@@ -14,26 +16,26 @@ interface LinkProps {
 }
 
 function Link({ href, children }: LinkProps): JSX.Element {
+  const { pathname } = useRouter();
+
   return (
     <li>
       <NextLink href={href}>
-        <a>{children}</a>
+        <a
+          rel={!href.startsWith('/') ? 'noopener noreferrer' : undefined}
+          target={!href.startsWith('/') ? '_blank' : undefined}
+          className={cn({ active: pathname === href })}
+        >
+          {children}
+        </a>
       </NextLink>
       <style jsx>{`
         li {
-          padding: 8px 0;
+          padding: 4px 0;
         }
 
         a {
-          cursor: pointer;
           font-size: 14px;
-          text-decoration: none;
-          color: var(--accents-5);
-          transition: color 0.2s ease 0s;
-        }
-
-        a:hover {
-          color: var(--on-background);
         }
       `}</style>
     </li>

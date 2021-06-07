@@ -96,7 +96,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         }
 
         a.active {
-          color: var(--on-background);
           cursor: not-allowed;
         }
       `}</style>

@@ -32,6 +32,10 @@ export default function Link({ href, children }: LinkProps): JSX.Element {
           font-size: 14px;
         }
 
+        a.active {
+          color: var(--on-background);
+        }
+
         @media (max-width: 800px) {
           li {
             white-space: nowrap;
