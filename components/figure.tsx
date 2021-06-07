@@ -10,7 +10,7 @@ export interface FigureProps {
   alt?: string;
 }
 
-export default function Figure({ src, width, height, caption, priority, alt, children }: FigureProps): JSX.Element {
+export default function Figure({ src, width, height, priority, alt, children }: FigureProps): JSX.Element {
   return (
     <figure>
       <Link href={src}>

@@ -361,6 +361,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@types/nprogress@npm:0.2.0"
+  checksum: f5831461b6984302ae8f4f7efaf963f9faaf8be1879db96bd2d4d48b32e4701141275fe5908b7b4c65fa817d92a09f3f95dbceed7146c1227017dac8915a6e90
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.3
   resolution: "@types/prop-types@npm:15.7.3"
@@ -4772,6 +4779,7 @@ resolve@^2.0.0-next.3:
   resolution: "st-michael-trio@workspace:."
   dependencies:
     "@types/node": ^15.12.1
+    "@types/nprogress": ^0.2.0
     "@types/react": ^17.0.9
     "@typescript-eslint/eslint-plugin": ^4.26.0
     "@typescript-eslint/parser": ^4.26.0

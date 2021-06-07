@@ -1,12 +1,6 @@
 import Link from 'components/link';
 
-import PageId from 'lib/page';
-
-export interface HeaderProps {
-  page: PageId;
-}
-
-export default function Header({ page }: HeaderProps): JSX.Element {
+export default function Header(): JSX.Element {
   return (
     <header>
       <h1>Saint Michael Trio</h1>
