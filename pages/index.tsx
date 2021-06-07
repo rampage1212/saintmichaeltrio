@@ -1,3 +1,4 @@
+import { Fade } from 'react-awesome-reveal';
 import Link from 'next/link';
 
 import Figure from 'components/figure';
@@ -17,13 +18,19 @@ export default function Home(): JSX.Element {
           Robin Sharp, violin; Russell Hancock, piano; Michel Flexer, cello
         </Figure>
         <section className='banner'>
-          <h1>The Saint Michael Trio<br />is Silicon Valley’s update<br />to the classical music scene.</h1>
+          <h1>
+            <Fade cascade triggerOnce>
+              <span>The Saint Michael Trio<br /></span>
+              <span>is Silicon Valley’s update<br /></span>
+              <span>to the classical music scene.</span>
+            </Fade>
+          </h1>
         </section>
         <section className='about'>
           <p>The Saint Michael Trio is hailed as Silicon Valley’s update to the classical music scene. Established in 2007, they are considered California’s premiere piano trio, and their recordings inspire ongoing accolades in the national press. They receive special praise for making their concerts interesting, accessible, and often funny.</p>
           <p>
             <Link href='/about'>
-              <a>Read more about our story</a>
+              <a>Read more about us and our story</a>
             </Link>
           </p>
         </section>
