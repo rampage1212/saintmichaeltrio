@@ -902,7 +902,8 @@ export default function Concerts(): JSX.Element {
         }
 
         header {
-          border: 1px solid var(--accents-2);
+          border-top: 1px solid var(--accents-2);
+          border-bottom: 1px solid var(--accents-2);
           background: var(--accents-1);
           color: var(--accents-5);
           margin: 1.5rem 0;
