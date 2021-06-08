@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
           Robin Sharp, violin; Russell Hancock, piano; Michel Flexer, cello
         </Figure>
         <section className='banner'>
-          <h1><Fade cascade triggerOnce>{banner}</Fade></h1>
+          <h1><Fade cascade>{banner}</Fade></h1>
         </section>
         <section className='about'>
           <p>
