@@ -1,5 +1,4 @@
 module.exports = {
-  future: { webpack5: true },
   reactStrictMode: true,
   webpack(config, { isServer, defaultLoaders }) {
     if (!isServer && process.env.ANALYZE === 'true') {
