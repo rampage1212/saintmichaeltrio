@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export interface FigureProps {
-  src: string;
+  src: { src: string; height: number; width: number };
   width: number;
   height: number;
   children: string;
@@ -13,8 +13,15 @@ export interface FigureProps {
 export default function Figure({ src, width, height, priority, alt, children }: FigureProps): JSX.Element {
   return (
     <figure>
-      <Link href={src}>
-        <Image src={src} width={width} height={height} alt={alt || children || ''} priority={priority} /> 
+      <Link href={src.src}>
+        <Image 
+          src={src} 
+          width={width} 
+          height={height} 
+          alt={alt || children || ''}
+          priority={priority} 
+          placeholder='blur'
+        /> 
       </Link>
       <figcaption>{children}</figcaption>
       <style jsx>{`

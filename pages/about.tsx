@@ -1,6 +1,10 @@
 import Figure from 'components/figure';
 import Page from 'components/page';
 
+import AcknowledgingApplause from 'assets/acknowledging-applause.jpg';
+import ApprehendingMendelssohn from 'assets/apprehending-mendelssohn.jpg';
+import GalaPointingUp from 'assets/gala-10-pointing-up.jpg';
+
 export default function About(): JSX.Element {
   return (
     <Page name='About'>
@@ -10,7 +14,7 @@ export default function About(): JSX.Element {
           <p>The Saint Michael Trio is hailed as Silicon Valley’s update to the classical music scene. Established in 2007, they are considered California’s premiere piano trio, and their recordings inspire ongoing accolades in the national press. They receive special praise for making their concerts interesting, accessible, and often funny.</p>
           <Figure
             alt='A Saint Michael Trio Performance'
-            src='/imgs/gala-10-pointing-up.jpg'
+            src={GalaPointingUp}
             height={3264}
             width={4896}
             priority
@@ -20,7 +24,7 @@ export default function About(): JSX.Element {
           <p>In 2008, the Trio were named artists-in-residence at Menlo College, where they quickly outgrew the auditorium and established a rabid fan base. In 2010 they became affiliated artists at Notre Dame de Namur University. In 2012 they were named the first resident chamber artists at Montalvo Arts Center, where they present numerous concerts and educational programs. In 2013 they entered a partnership with Stanford University where they appear before sold-out crowds at Dinkelspiel Auditorium.</p>
           <p>One of the Trio’s most distinguishing features is the popularity of their “informances”—presentations which explore a single composer in depth, incorporating extensive commentary, slides, and demonstrations of the composer’s compositional devices. These are credited with building a new audience for the classical masterworks, particularly among the rising generation.</p>
           <Figure
-            src='/imgs/apprehending-mendelssohn.jpg'
+            src={ApprehendingMendelssohn}
             height={720}
             width={960}
           >
@@ -30,7 +34,7 @@ export default function About(): JSX.Element {
           <p>The Saint Michaels are also recognized for championing the cross-over jazz of Claude Bolling. Their 2012 album French Fusion elaborated and expanded Bolling’s solo suites and won praise from the composer, and in 2013 the Trio premiered their treatment of Bolling’s Suite for Orchestra & Jazz Piano Trio with the Bismarck Symphony.</p>
           <p>Based in Palo Alto, California, the group appears throughout the United States and is heard on Pandora, Spotify, and FM radio stations through the US and Canada.</p>
           <Figure
-            src='/imgs/acknowledging-applause.jpg'
+            src={AcknowledgingApplause}
             height={3735}
             width={5602}
           >

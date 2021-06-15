@@ -2,6 +2,11 @@ import Image from 'next/image';
 
 import Page from 'components/page';
 
+import Debut from 'assets/albums/debut.jpg';
+import FrenchFusion from 'assets/albums/french-fusion.jpg';
+import MusicOfAmericas from 'assets/albums/music-of-americas.jpg';
+import Warning from 'assets/albums/warning.jpg';
+
 interface AlbumLinkProps {
   href: string;
   children: string;
@@ -44,24 +49,25 @@ interface Review {
 }
 
 interface AlbumProps {
-  cover: string;
+  cover: { src: string; height: number; width: number };  
+  priority?: boolean;
   title: string;
   amazon?: string;
   itunes?: string;
   reviews: Review[];
   description: string;
-  priority?: boolean;
 }
 
-function Album({ cover, title, amazon, itunes, reviews, description, priority }: AlbumProps): JSX.Element {
+function Album({ cover, priority, title, amazon, itunes, reviews, description }: AlbumProps): JSX.Element {
   return (
     <li>
       <div className='wrapper'>
         <div className='album'>
           <Image
-            src={`/albums/${cover}`}
-            alt={`${title} Album Cover`}
+            src={cover}
+            alt={`${title} Cover`}
             priority={priority}
+            placeholder='blur'
             height={360}
             width={360}
           />
@@ -142,7 +148,7 @@ export default function Albums(): JSX.Element {
         <ul>
           <Album
             priority
-            cover='music-of-americas.jpg'
+            cover={MusicOfAmericas}
             title='Music of Americas'
             amazon='https://www.amazon.com/gp/product/B073W1RVGS/ref=dm_ws_sp_ps_dp'
             description='Saint Mike’s 4th album celebrates music of the western hemisphere: Argentinian tangos! Brazilian jazz! Canadian panache and more! David Rokeach (drums), Pat Klobas (bass) and Gene Burkert (saxophone) add zest on select tracks.'
@@ -155,7 +161,7 @@ export default function Albums(): JSX.Element {
           />
           <Album
             priority
-            cover='french-fusion.jpg'
+            cover={FrenchFusion}
             title='French Fusion'
             amazon='http://www.amazon.com/gp/product/B00761PGGY/ref=dm_dp_cdp?ie=UTF8&s=music&qid=1335846168&sr=1-1'
             itunes='http://itunes.apple.com/us/album/french-fusion-crossover-jazz/id493987652'
@@ -172,7 +178,7 @@ export default function Albums(): JSX.Element {
             ]}
           />
           <Album
-            cover='warning.jpg'
+            cover={Warning}
             title='Warning: May Cause Mood Swings'
             amazon='http://www.amazon.com/Warning-May-Cause-Mood-Swings/dp/B005ZNCK64/ref=sr_1_1?ie=UTF8&qid=1321804927&sr=8-1'
             itunes='http://itunes.apple.com/us/album/warning-may-cause-mood-swings/id477677533'
@@ -193,7 +199,7 @@ export default function Albums(): JSX.Element {
             ]}
           />
           <Album
-            cover='debut.jpg'
+            cover={Debut}
             title='Debut'
             amazon='http://www.amazon.com/Daniel-violin-violoncello-Russell-Hancock/dp/B001KT34XK/ref=sr_1_1?ie=UTF8&qid=1298010318&sr=8-1'
             itunes='http://itunes.apple.com/us/album/debut/id295959810'

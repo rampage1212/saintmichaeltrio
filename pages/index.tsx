@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import Figure from 'components/figure';
 import Page from 'components/page';
 
+import GalaExplaining from 'assets/gala-9-explaining.jpg';
+
 const banner = [
   <span key='trio'>{'The Saint Michael Trio'}<br /></span>,
   <span key='valley'>{'is Silicon Valley’s update'}<br /></span>,
@@ -23,7 +25,7 @@ export default function Home(): JSX.Element {
       <main>
         <Figure
           alt='A Saint Michael Trio Performance'
-          src='/imgs/gala-9-explaining.jpg'
+          src={GalaExplaining}
           height={563}
           width={870}
           priority
