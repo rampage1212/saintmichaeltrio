@@ -1,18 +1,40 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import NavLink from 'components/nav-link';
 import Page from 'components/page';
 
+import AcknowledgingApplause from 'assets/acknowledging-applause.jpg';
+import ApprehendingMendelssohn from 'assets/apprehending-mendelssohn.jpg';
 import GalaExplaining from 'assets/gala-9-explaining.jpg';
+import GalaPointingUp from 'assets/gala-10-pointing-up.jpg';
 
 export default function Home(): JSX.Element {
+  const [image, setImage] = useState(GalaPointingUp);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setImage((prev) => {
+        const images = [
+          GalaPointingUp,
+          GalaExplaining,
+          AcknowledgingApplause,
+          ApprehendingMendelssohn,
+        ];
+        const idx = images.indexOf(prev);
+        return idx < images.length - 1 ? images[idx + 1] : images[0];
+      });
+    }, 5000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <Page name='Home' header={false}>
       <main>
         <section className='hero dark'>
           <Image 
-            src={GalaExplaining} 
-            alt='A Saint Michael Trio Performance'
+            src={image} 
+            alt=''
             placeholder='blur'
             layout='fill'
             objectFit='cover'
