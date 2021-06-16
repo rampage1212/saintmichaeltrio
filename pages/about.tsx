@@ -28,7 +28,7 @@ export default function About(): JSX.Element {
             height={720}
             width={960}
           >
-            An "informance" presentation on Mendelssohn in April of 2018
+            An “informance” presentation on Mendelssohn in April of 2018
           </Figure>
           <p>In addition to promoting the classical literature, Saint Mike is recognized for commissioning new composers and bringing the contemporary idiom to the classical stage. They have given world premieres to works by New York-based composers Kenji Bunch and Glen Roven, and Vancouver-based Cameron Wilson; in the San Francisco Bay Area they work in creative partnership with Mary Finlayson.</p>
           <p>The Saint Michaels are also recognized for championing the cross-over jazz of Claude Bolling. Their 2012 album French Fusion elaborated and expanded Bolling’s solo suites and won praise from the composer, and in 2013 the Trio premiered their treatment of Bolling’s Suite for Orchestra & Jazz Piano Trio with the Bismarck Symphony.</p>

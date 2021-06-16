@@ -1,15 +1,16 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
 
-import Header from 'components/header';
 import Footer from 'components/footer';
+import Header from 'components/header';
 
 export interface PageProps {
   name: string;
   children: ReactNode;
+  header?: boolean;
 }
 
-export default function Page({ name, children }: PageProps): JSX.Element {
+export default function Page({ name, children, header = true }: PageProps): JSX.Element {
   return (
     <>
       <Head>
@@ -27,7 +28,7 @@ export default function Page({ name, children }: PageProps): JSX.Element {
         />
       </Head>
       <div>
-        <Header />
+        {header && <Header />}
         {children}
         <style jsx>{`
           div {
