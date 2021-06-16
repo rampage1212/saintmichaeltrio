@@ -3,15 +3,9 @@ const path = require('path');
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'postcss-modules'],
+  plugins: ['@typescript-eslint', 'promise'],
   parserOptions: {
-    project: [
-      path.resolve(__dirname, 'tsconfig.json'),
-      path.resolve(__dirname, 'sw/tsconfig.json'),
-      path.resolve(__dirname, 'firebase/functions/tsconfig.json'),
-      path.resolve(__dirname, 'aws/tsconfig.json'),
-      path.resolve(__dirname, 'cypress/tsconfig.json'),
-    ],
+    project: [path.resolve(__dirname, 'tsconfig.json')],
   },
   extends: [
     'next',
@@ -20,8 +14,8 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:promise/recommended',
     'prettier',
-    'plugin:postcss-modules/recommended',
   ],
   env: {
     browser: true,
