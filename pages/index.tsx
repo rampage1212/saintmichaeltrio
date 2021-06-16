@@ -1,46 +1,31 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import NavLink from 'components/nav-link';
 import Page from 'components/page';
 
 import AcknowledgingApplause from 'assets/acknowledging-applause.jpg';
-import ApprehendingMendelssohn from 'assets/apprehending-mendelssohn.jpg';
 import GalaExplaining from 'assets/gala-9-explaining.jpg';
 import GalaPointingUp from 'assets/gala-10-pointing-up.jpg';
 
 export default function Home(): JSX.Element {
-  const [image, setImage] = useState(GalaPointingUp);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setImage((prev) => {
-        const images = [
-          GalaPointingUp,
-          GalaExplaining,
-          AcknowledgingApplause,
-          ApprehendingMendelssohn,
-        ];
-        const idx = images.indexOf(prev);
-        return idx < images.length - 1 ? images[idx + 1] : images[0];
-      });
-    }, 5000);
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <Page name='Home' header={false}>
       <main>
         <section className='hero dark'>
-          <Image 
-            src={image} 
-            alt=''
-            placeholder='blur'
-            layout='fill'
-            objectFit='cover'
-            objectPosition='center'
-            priority
-          />
+          <div className='images'>
+            {[GalaPointingUp, GalaExplaining, AcknowledgingApplause].map((img) => (
+              <Image 
+                alt=''
+                src={img} 
+                key={img.src}
+                placeholder='blur'
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
+                priority
+              />
+            ))}
+          </div>
           <div className='scrim' />
           <header>
             <h1>Saint<br />Michael<br />Trio</h1>
@@ -121,6 +106,37 @@ export default function Home(): JSX.Element {
             opacity: 1;
             transform: translate(0, 0);
           }
+        }
+
+        .images {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+
+        .images > :global(div) {
+          animation-name: img-fade;
+          animation-iteration-count: infinite;
+          animation-duration: 6s;
+          animation-fill-mode: both;
+        }
+
+        .images > :global(div:nth-child(2)) {
+          animation-delay: -4s;
+        }
+
+        .images > :global(div:nth-child(3)) {
+          animation-delay: -2s;
+        }
+
+        @keyframes img-fade {
+          0% {opacity: 0;}
+          20% {opacity: 1;}
+          33% {opacity: 1;}
+          53% {opacity: 0;}
+          100% {opacity: 0;}
         }
 
         nav {
