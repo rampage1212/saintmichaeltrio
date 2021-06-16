@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
           <div className='scrim' />
           <header>
             <h1>Saint<br />Michael<br />Trio</h1>
-            <h2>Silicon Valley’s update to<br />the classical music scene.</h2>
+            <h2>Silicon Valley’s update to<br />the classical music scene</h2>
           </header>
         </section>
         <nav>
@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
           background-color: var(--background);
           padding: 0;
           margin: 0;
-          min-height: calc(100vh - 96px);
+          min-height: calc(100vh - 36px);
           width: 100%;
           display: flex;
           align-items: center;
@@ -70,14 +70,14 @@ export default function Home(): JSX.Element {
           max-width: calc(var(--page-width) + 2 * 24px);
           width: 100%;
           padding: 0 24px;
-          margin: 0 auto;
+          margin: 2rem auto;
         }
 
         section.hero h1 {
           font-size: 8rem;
           font-weight: 400;
           line-height: 1;
-          margin: 1.5rem 0;
+          margin: 3rem 0;
           color: var(--on-background);
           animation-duration: 1s;
           animation-name: fade;
@@ -86,12 +86,12 @@ export default function Home(): JSX.Element {
         
         section.hero h2 {
           font-size: 2rem;
-          font-weight: 700;
+          font-weight: 500;
           line-height: 1.2;
-          margin: 1.5rem 0;
+          margin: 3rem 0;
           color: var(--on-background);
           font-family: var(--font-sans);
-          animation-delay: 0.45s;
+          animation-delay: 0.2s;
           animation-duration: 1s;
           animation-name: fade;
           animation-fill-mode: both;
@@ -100,7 +100,7 @@ export default function Home(): JSX.Element {
         @keyframes fade {
           from {
             opacity: 0;
-            transform: translate(-0.5rem, 0);
+            transform: translate(0, 0.85rem);
           }
           to {
             opacity: 1;
@@ -119,16 +119,15 @@ export default function Home(): JSX.Element {
         .images > :global(div) {
           animation-name: img-fade;
           animation-iteration-count: infinite;
-          animation-duration: 6s;
-          animation-fill-mode: both;
+          animation-duration: 12s;
         }
 
         .images > :global(div:nth-child(2)) {
-          animation-delay: -4s;
+          animation-delay: -8s;
         }
 
         .images > :global(div:nth-child(3)) {
-          animation-delay: -2s;
+          animation-delay: -4s;
         }
 
         @keyframes img-fade {
@@ -144,10 +143,19 @@ export default function Home(): JSX.Element {
           align-items: center;
           justify-content: center;
           padding: 0 1rem;
-          height: 96px;
+          height: 36px;
           margin-bottom: -2rem;
-          border-top: 1px solid var(--accents-2);
           font-family: var(--font-sans);
+          background: var(--primary);
+        }
+
+        nav :global(a) {
+          color: var(--on-primary);
+        }
+
+        nav :global(a:hover), 
+        nav :global(a.active) {
+          color: var(--on-primary);
         }
 
         ul {
