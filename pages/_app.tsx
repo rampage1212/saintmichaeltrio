@@ -55,14 +55,18 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
         html,
         body {
-          font-size: 20px;
+          font-size: 16px;
           line-height: 1.45;
-          font-family: var(--font-serif);
+          font-family: var(--font-sans);
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: subpixel-antialiased;
           -moz-osx-font-smoothing: grayscale;
           background-color: var(--background);
           color: var(--on-background);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          font-family: var(--font-serif);
         }
 
         h2 {
@@ -108,7 +112,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
-          --link-size: 0.7rem;
+          --link-size: 14px;
           --page-width: 800px;
 
           --primary: #c84702;

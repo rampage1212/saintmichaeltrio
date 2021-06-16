@@ -85,6 +85,7 @@ function Group({ label, children }: GroupProps): JSX.Element {
 
         h2 {
           font-weight: 400;
+          font-family: var(--font-sans);
           font-size: var(--link-size);
           margin: 0.25rem 0;
         }
@@ -182,10 +183,8 @@ export default function Footer(): JSX.Element {
         footer {
           background: var(--accents-1);
           border-top: 1px solid var(--accents-2);
-          font-family: var(--font-sans);
           padding: 1.5rem 1rem 1rem;
           margin-top: 2rem;
-          line-height: 1;
         }
 
         nav {

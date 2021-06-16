@@ -1,75 +1,25 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 
-interface LinkProps {
-  href: string;
-  children: string;
-}
-
-function Link({ href, children }: LinkProps): JSX.Element {
-  const { pathname } = useRouter();
-
-  return (
-    <li>
-      <NextLink href={href}>
-        <a 
-          rel={!href.startsWith('/') ? 'noopener noreferrer' : undefined}
-          target={!href.startsWith('/') ? '_blank' : undefined}
-          className={cn({ active: pathname === href })}
-        >
-          {children}
-        </a>
-      </NextLink>
-      <style jsx>{`
-        li {
-          display: inline;
-          float: none;
-          margin: 0 0.5rem;
-        }
-
-        a {
-          font-size: var(--link-size);
-        }
-
-        a.active {
-          color: var(--on-background);
-        }
-
-        @media (max-width: 800px) {
-          li {
-            white-space: nowrap;
-          }
-
-          li:first-of-type {
-            margin-left: 0;
-          }
-
-          li:last-of-type {
-            margin-right: 1rem;
-          }
-        }
-      `}</style>
-    </li>
-  );
-}
+import NavLink from 'components/nav-link';
 
 export default function Header(): JSX.Element {
   const { pathname } = useRouter();
 
   return (
     <header>
-      <NextLink href='/'>
+      <Link href='/'>
         <a className={cn('header', { active: pathname === '/' })}><h1>Saint Michael Trio</h1></a>
-      </NextLink>
+      </Link>
       <nav>
         <ul>
-          <Link href='/'>Home</Link>
-          <Link href='/concerts'>Concerts</Link>
-          <Link href='/press'>Press</Link>
-          <Link href='/about'>About</Link>
-          <Link href='mailto:boxoffice@saintmichaeltrio.com'>Contact</Link>
-          <Link href='/albums'>Albums</Link>
+          <NavLink href='/'>Home</NavLink>
+          <NavLink href='/concerts'>Concerts</NavLink>
+          <NavLink href='/press'>Press</NavLink>
+          <NavLink href='/about'>About</NavLink>
+          <NavLink href='mailto:boxoffice@saintmichaeltrio.com'>Contact</NavLink>
+          <NavLink href='/albums'>Albums</NavLink>
         </ul>
       </nav>
       <style jsx>{`
@@ -86,7 +36,7 @@ export default function Header(): JSX.Element {
         }
 
         a.header > h1 {
-          font-size: 2rem;
+          font-size: 2.5rem;
           font-weight: 400;
           text-align: center;
           margin: 1rem 0;

@@ -1,23 +1,9 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 
+import NavLink from 'components/nav-link';
 import Page from 'components/page';
 
 import GalaExplaining from 'assets/gala-9-explaining.jpg';
-
-const banner = [
-  <span key='trio'>Robin Sharp, violin<br /></span>,
-  <span key='valley'>Russell Hancock, piano<br /></span>,
-  <span key='music'>Michel Flexer, cello</span>,
-];
-
-// TODO: Replace this `any` with the actual `FadeProps` type.
-// @see {@link https://github.com/morellodev/react-awesome-reveal/issues/79}
-const Fade = dynamic<any>(
-  () => import('react-awesome-reveal').then((m) => m.Fade),
-  { loading: () => <>{banner}</> }
-);
 
 export default function Home(): JSX.Element {
   return (
@@ -39,23 +25,16 @@ export default function Home(): JSX.Element {
             <h2>Silicon Valley’s update to<br />the classical music scene.</h2>
           </header>
         </section>
-        <section className='banner'>
-          <h1><Fade cascade>{banner}</Fade></h1>
-        </section>
-        <section className='about'>
-          <p>
-            The Saint Michael Trio is hailed as Silicon Valley’s update to the
-            classical music scene. Established in 2007, they are considered
-            California’s premiere piano trio, and their recordings inspire
-            ongoing accolades in the national press. They receive special praise
-            for making their concerts interesting, accessible, and often funny.
-          </p>
-          <p>
-            <Link href='/about'>
-              <a>Read more about us and our story</a>
-            </Link>
-          </p>
-        </section>
+        <nav>
+          <ul>
+            <NavLink href='/'>Home</NavLink>
+            <NavLink href='/concerts'>Concerts</NavLink>
+            <NavLink href='/press'>Press</NavLink>
+            <NavLink href='/about'>About</NavLink>
+            <NavLink href='mailto:boxoffice@saintmichaeltrio.com'>Contact</NavLink>
+            <NavLink href='/albums'>Albums</NavLink>
+          </ul>
+        </nav>
       </main>
       <style jsx>{`
         section.hero {
@@ -63,7 +42,7 @@ export default function Home(): JSX.Element {
           background-color: var(--background);
           padding: 0;
           margin: 0;
-          min-height: 100vh;
+          min-height: calc(100vh - 96px);
           width: 100%;
           display: flex;
           align-items: center;
@@ -93,6 +72,9 @@ export default function Home(): JSX.Element {
           line-height: 1;
           margin: 1.5rem 0;
           color: var(--on-background);
+          animation-duration: 1s;
+          animation-name: fade;
+          animation-fill-mode: both;
         }
         
         section.hero h2 {
@@ -102,37 +84,58 @@ export default function Home(): JSX.Element {
           margin: 1.5rem 0;
           color: var(--on-background);
           font-family: var(--font-sans);
+          animation-delay: 0.45s;
+          animation-duration: 1s;
+          animation-name: fade;
+          animation-fill-mode: both;
         }
 
-        section.banner {
-          background: var(--primary);
+        @keyframes fade {
+          from {
+            opacity: 0;
+            transform: translate(-0.5rem, 0);
+          }
+          to {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+        }
+
+        nav {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 1rem;
+          height: 96px;
+          margin-bottom: -2rem;
+          border-top: 1px solid var(--accents-2);
+          font-family: var(--font-sans);
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
           margin: 0;
         }
 
-        section.banner h1 {
-          font-size: 2.5rem;
-          font-weight: 400;
-          color: var(--on-primary);
-          max-width: calc(var(--page-width) + 2 * 24px);
-          padding: 2.5rem 24px;
-          margin: auto;
-        }
+        @media (max-width: 800px) {
+          nav {
+            max-width: 100%;
+            margin: auto;
+            align-items: flex-end;
+            overflow: auto;
+            scrollbar-width: none;
+            justify-content: flex-start;
+          }
 
-        section.about {
-          max-width: calc(var(--page-width) + 2 * 24px);
-          margin: 2.5rem auto;
-          padding: 0 24px;
-        }
-
-        a::after {
-          content: '→';
-          display: inline-block;
-          transform: translate(4px);
-          transition: transform 0.2s ease 0s;
-        }
-
-        a:hover::after {
-          transform: translate(8px);
+          ul {
+            display: flex;
+            flex-grow: 1;
+            transform: translateZ(0);
+            margin-right: 0;
+            align-items: center;
+            justify-content: center;
+          }
         }
       `}</style>
     </Page>
