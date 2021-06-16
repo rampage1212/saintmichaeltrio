@@ -19,6 +19,8 @@ export default function Page({ name, children, header = true }: PageProps): JSX.
           name='description'
           content='The Saint Michael Trio (Robin Sharp, violin; Russell Hancock, piano; Michel Flexer, cello) is hailed as Silicon Valley’s update to the classical music scene.'
         />
+        <meta charSet='UTF-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1.0' />
       </Head>
       <div>
         {header && <Header />}
