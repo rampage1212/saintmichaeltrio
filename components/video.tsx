@@ -178,13 +178,13 @@ export default function Video({
         figure {
           display: block;
           text-align: center;
-          margin: 1.5rem auto 1rem;
+          margin: 2rem auto;
         }
        
         figcaption {
           font-size: 0.9rem;
           font-style: italic;
-          margin-top: 0.5rem;
+          margin-top: 1rem;
           color: var(--accents-5);
         }
 
@@ -193,6 +193,7 @@ export default function Video({
           max-width: 100%;
           position: relative;
           font-family: var(--font-sans);
+          border: 1px solid var(--accents-2);
         }
         
         div.controls div {
@@ -219,8 +220,7 @@ export default function Video({
           display: flex;
           justify-content: center;
           padding-bottom: calc(100% / 16 * 9);
-          background-color: var(--accents-1);
-          border: 1px solid var(--accents-2);
+          background-color: black;
         }
         
         .caption {
