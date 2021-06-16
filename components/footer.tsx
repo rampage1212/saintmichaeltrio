@@ -4,9 +4,8 @@ import { useRouter } from 'next/router';
 
 import DarkIcon from 'components/icons/dark';
 import LightIcon from 'components/icons/light';
-import SystemIcon from 'components/icons/system';
-
 import Select from 'components/select';
+import SystemIcon from 'components/icons/system';
 
 import { useTheme } from 'lib/theme';
 

@@ -12,7 +12,7 @@ export default function Videos(): JSX.Element {
           Scherzo by Cecille Chaminade in October of 2008
         </Video>
         <Video src='/vids/theme-from-sabrina.mp4'>
-          John Williams' Theme from Sabrina in January of 2014
+          John Williams’ Theme from Sabrina in January of 2014
         </Video>
       </main>
       <style jsx>{`
