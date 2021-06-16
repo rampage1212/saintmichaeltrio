@@ -66,7 +66,6 @@ export default function Header(): JSX.Element {
         <ul>
           <Link href='/'>Home</Link>
           <Link href='/concerts'>Concerts</Link>
-          <Link href='/video'>Video</Link>
           <Link href='/press'>Press</Link>
           <Link href='/about'>About</Link>
           <Link href='mailto:boxoffice@saintmichaeltrio.com'>Contact</Link>
