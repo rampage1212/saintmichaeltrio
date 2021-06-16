@@ -14,6 +14,7 @@ module.exports = {
     ],
   },
   extends: [
+    'next',
     'airbnb-typescript',
     'airbnb/hooks',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -63,6 +64,11 @@ module.exports = {
       },
     ],
 
+    // Expect `<a>` tags to not have `href` attributes when wrapped with the
+    // Next.js `<Link>` component.
+    // @see {@link https://git.io/Jns2B}
+    'jsx-a11y/anchor-is-valid': 'warn',
+
     // Use `void` operator to deal with dangling promises.
     // @see {@link https://eslint.org/docs/rules/no-void}
     // @example
@@ -101,6 +107,11 @@ module.exports = {
     // Next.js already imports React globally and handles JSX for us.
     // @see {@link https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md}
     'react/react-in-jsx-scope': 'off',
+
+    // I use TypeScript default object property syntax instead of React's
+    // `defaultProps` functionality (to reduce code complexity).
+    // @see {@link https://git.io/JnsaY}
+    'react/require-default-props': 'off',
 
     // Sort imports using ESLint (the AirBNB config disables these opinionated
     // import sorting rules). This sorts the imports within each import group

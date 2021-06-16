@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { Callback, CallbackParam } from 'lib/callback';
+import { Callback } from 'lib/callback';
 
 export type Theme = 'system' | 'dark' | 'light';
 export interface ThemeContextType {
@@ -10,7 +10,7 @@ export interface ThemeContextType {
 
 export const ThemeContext = createContext<ThemeContextType>({
   theme: 'system',
-  setTheme: (param: CallbackParam<Theme>) => {},
+  setTheme: () => {},
 });
 
 export function useTheme(): ThemeContextType {

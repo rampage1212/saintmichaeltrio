@@ -115,11 +115,14 @@ export default function Video({
     [updateDrag]
   );
 
+  const videoId = `${src.split('/').pop() as string}-video`;
+
   return (
     <figure>
       <div className='video' onMouseEnter={onEnter} onMouseLeave={onLeave}>
         <div className='container'>
           <video
+            id={videoId}
             onTimeUpdate={updateProgress}
             onDurationChange={updateProgress}
             autoPlay={autoplay}
@@ -128,7 +131,9 @@ export default function Video({
             loop={loop}
             src={src}
             ref={ref}
-          />
+          >
+            <track kind='captions' />
+          </video>
           <div className={cn('controls', { visible })}>
             <button className='play' type='button' onClick={togglePlayback}>
               {playing && <PauseIcon />}
@@ -144,6 +149,13 @@ export default function Video({
                 onMouseDown={startDrag}
                 onMouseMove={updateDrag}
                 className='drag-handler'
+                role='scrollbar'
+                aria-label='Scroll video'
+                aria-controls={videoId}
+                aria-valuemin={0}
+                aria-valuenow={progress * 100}
+                aria-valuemax={100}
+                tabIndex={-1}
               />
               <progress value={progress * 100} max='100' />
               <div style={{ left: `${progress * 100}%` }} className='handle' />
