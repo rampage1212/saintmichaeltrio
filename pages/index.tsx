@@ -75,7 +75,7 @@ export default function Home(): JSX.Element {
 
         section.hero h1 {
           font-size: 8rem;
-          font-weight: 400;
+          font-weight: 600;
           line-height: 1;
           margin: 3rem 0;
           color: var(--on-background);
@@ -86,7 +86,7 @@ export default function Home(): JSX.Element {
         
         section.hero h2 {
           font-size: 2rem;
-          font-weight: 500;
+          font-weight: 700;
           line-height: 1.2;
           margin: 3rem 0;
           color: var(--on-background);
