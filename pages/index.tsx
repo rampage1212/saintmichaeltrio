@@ -14,7 +14,7 @@ export default function Home(): JSX.Element {
       <main>
         <section className='hero dark'>
           <div className='images'>
-            {[Gala14, Gala9, Gala13, GalaPointingUp, Applause].map((img) => (
+            {[Gala9, Gala13, GalaPointingUp, Applause, Gala14].map((img) => (
               <Image
                 alt=''
                 src={img}
