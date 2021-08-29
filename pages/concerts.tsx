@@ -35,7 +35,7 @@ export default function Concerts(): JSX.Element {
   return (
     <Page name='Concerts'>
       <header role='banner'>
-        <p className='wrapper'>Due to COVID-19 restrictions, we are no longer holding in-person concerts. We will resume live performances as health guidelines permit.</p>
+        <p className='wrapper'>Due to COVID-19 restrictions and the emerging variants, the Saint Michael Trio is unable to appear live and in-person. Concertizing will resume as health guidelines permit.</p>
       </header>
       <main className='wrapper'>
         <h2>Past concerts</h2>
