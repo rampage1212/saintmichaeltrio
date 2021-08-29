@@ -2,7 +2,7 @@ import Figure from 'components/figure';
 import Page from 'components/page';
 
 import AcknowledgingApplause from 'assets/acknowledging-applause.jpg';
-import ApprehendingMendelssohn from 'assets/apprehending-mendelssohn.jpg';
+import Informance from 'assets/informance.png';
 import GalaPointingUp from 'assets/gala-10-pointing-up.jpg';
 
 export default function About(): JSX.Element {
@@ -11,24 +11,15 @@ export default function About(): JSX.Element {
       <main className='wrapper'>
         <article>
           <h2>About Saint Mike</h2>
-          <p>The Saint Michael Trio is hailed as Silicon Valley’s update to the classical music scene. Established in 2007, they are considered California’s premiere piano trio, and their recordings inspire ongoing accolades in the national press. They receive special praise for making their concerts interesting, accessible, and often funny.</p>
-          <Figure
-            alt='A Saint Michael Trio Performance'
-            src={GalaPointingUp}
-            height={3264}
-            width={4896}
-            priority
-          >
-            Robin Sharp, violin; Russell Hancock, piano; Michel Flexer, cello
-          </Figure>
+          <p>The Saint Michael Trio (Robin Sharp, violin; Russell Hancock, piano; Michel Flexer, cello) is hailed as Silicon Valley’s update to the classical music scene. Established in 2007, they are considered California’s premiere piano trio, and their recordings inspire ongoing accolades in the national press. They receive special praise for making their concerts interesting, accessible, and often funny.</p>
           <p>In 2008, the Trio were named artists-in-residence at Menlo College, where they quickly outgrew the auditorium and established a rabid fan base. In 2010 they became affiliated artists at Notre Dame de Namur University. In 2012 they were named the first resident chamber artists at Montalvo Arts Center, where they present numerous concerts and educational programs. In 2013 they entered a partnership with Stanford University where they appear before sold-out crowds at Dinkelspiel Auditorium.</p>
           <p>One of the Trio’s most distinguishing features is the popularity of their “informances”—presentations which explore a single composer in depth, incorporating extensive commentary, slides, and demonstrations of the composer’s compositional devices. These are credited with building a new audience for the classical masterworks, particularly among the rising generation.</p>
           <Figure
-            src={ApprehendingMendelssohn}
-            height={720}
+            src={Informance}
+            height={476}
             width={960}
           >
-            An “informance” presentation on Mendelssohn in April of 2018
+            An “informance” exploring Mendelssohn at Stanford University
           </Figure>
           <p>In addition to promoting the classical literature, Saint Mike is recognized for commissioning new composers and bringing the contemporary idiom to the classical stage. They have given world premieres to works by New York-based composers Kenji Bunch and Glen Roven, and Vancouver-based Cameron Wilson; in the San Francisco Bay Area they work in creative partnership with Mary Finlayson.</p>
           <p>The Saint Michaels are also recognized for championing the cross-over jazz of Claude Bolling. Their 2012 album French Fusion elaborated and expanded Bolling’s solo suites and won praise from the composer, and in 2013 the Trio premiered their treatment of Bolling’s Suite for Orchestra & Jazz Piano Trio with the Bismarck Symphony.</p>
@@ -38,7 +29,7 @@ export default function About(): JSX.Element {
             height={3735}
             width={5602}
           >
-            Acknowledging applause after a successful evening
+            The Saint Michael Trio at Mantalvo Arts Center  
           </Figure>
         </article>
         <article>
