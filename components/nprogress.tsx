@@ -26,7 +26,7 @@ export default function Progress(): JSX.Element {
       }
 
       #nprogress .bar {
-        background: var(--primary);
+        background: var(--on-background);
         position: fixed;
         z-index: 100;
         top: 0;
@@ -41,7 +41,7 @@ export default function Progress(): JSX.Element {
         right: 0px;
         width: 100px;
         height: 100%;
-        box-shadow: 0 0 10px var(--primary), 0 0 5px var(--primary);
+        box-shadow: 0 0 10px var(--on-background), 0 0 5px var(--on-background);
         opacity: 1;
 
         -webkit-transform: rotate(3deg) translate(0px, -4px);
