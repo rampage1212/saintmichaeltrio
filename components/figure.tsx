@@ -5,7 +5,7 @@ export interface FigureProps {
   src: { src: string; height: number; width: number };
   width: number;
   height: number;
-  children: string;
+  children?: string;
   priority?: boolean;
   alt?: string;
 }
@@ -23,7 +23,7 @@ export default function Figure({ src, width, height, priority, alt, children }: 
           placeholder='blur'
         /> 
       </Link>
-      <figcaption>{children}</figcaption>
+      {children && <figcaption>{children}</figcaption>}
       <style jsx>{`
         figure {
           display: block;
