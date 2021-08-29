@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 
 import NProgress from 'components/nprogress';
+import Nav from 'components/nav';
 
 import { Theme, ThemeContext } from 'lib/theme';
 
@@ -24,11 +25,16 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     localStorage.setItem('theme', theme);
   }, [theme]);
+  const [active, setActive] = useState<{ x: number; width: number }>({
+    x: 0,
+    width: 0,
+  });
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <NProgress />
       <Component {...pageProps} />
+      <Nav active={active} setActive={setActive} />
       <style jsx global>{`
         ::selection {
           background-color: var(--selection);
@@ -79,7 +85,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         .wrapper > h2:first-child {
           margin-top: 0;
         }
-        
+
         p {
           margin: 1rem 0;
         }
@@ -89,7 +95,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           text-decoration: none;
           color: var(--accents-5);
           transition: color 0.2s ease 0s;
-        } 
+        }
 
         a:hover {
           color: var(--on-background);
@@ -103,8 +109,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         :root {
           --font-serif: valkyrie_a, 'Georgia', 'Times New Roman', serif;
           --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-            'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-            'Droid Sans', 'Helvetica Neue', sans-serif;
+            'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
           --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 

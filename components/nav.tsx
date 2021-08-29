@@ -1,41 +1,73 @@
 import NavLink from 'components/nav-link';
 
-export default function Nav(): JSX.Element {
+import { Callback } from 'lib/callback';
+
+export interface NavProps {
+  active: { x: number; width: number };
+  setActive: Callback<{ x: number; width: number }>;
+}
+
+export default function Nav({ active, setActive }: NavProps): JSX.Element {
   return (
     <nav>
       <ul>
-        <NavLink href='/'>Home</NavLink>
-        <NavLink href='/concerts'>Concerts</NavLink>
-        <NavLink href='/press'>Press</NavLink>
-        <NavLink href='/about'>About</NavLink>
-        <NavLink href='mailto:boxoffice@saintmichaeltrio.com'>Contact</NavLink>
-        <NavLink href='/albums'>Albums</NavLink>
+        <div className='bar' />
+        <NavLink href='/' setActive={setActive}>
+          Home
+        </NavLink>
+        <NavLink href='/concerts' setActive={setActive}>
+          Concerts
+        </NavLink>
+        <NavLink href='/press' setActive={setActive}>
+          Press
+        </NavLink>
+        <NavLink href='/about' setActive={setActive}>
+          About
+        </NavLink>
+        <NavLink
+          href='mailto:boxoffice@saintmichaeltrio.com'
+          setActive={setActive}
+        >
+          Contact
+        </NavLink>
+        <NavLink href='/albums' setActive={setActive}>
+          Albums
+        </NavLink>
       </ul>
       <style jsx>{`
         nav {
+          box-shadow: 0 -1px 24px rgba(0, 0, 0, 0.25);
           display: flex;
           align-items: center;
-          height: 36px;
-          margin-bottom: -2rem;
           font-family: var(--font-sans);
-          background: var(--primary);
-        }
-
-        nav :global(a) {
-          color: var(--on-primary);
-        }
-
-        nav :global(a:hover),
-        nav :global(a.active) {
-          color: var(--on-primary);
+          background: var(--on-background);
+          position: fixed;
+          z-index: 4;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
 
         ul {
           list-style: none;
-          width: 100%;
           max-width: calc(var(--page-width) + 2 * 24px);
           padding: 0 24px;
           margin: 0 auto;
+          position: relative;
+          width: 100%;
+        }
+
+        .bar {
+          height: 2px;
+          background: var(--background);
+          position: absolute;
+          left: 9px;
+          bottom: 0;
+          transition: 0.15s ease;
+          transition-property: width, transform;
+          transition-duration: 150ms;
+          transform: translateX(${active.x - 8}px);
+          width: ${active.width}px;
         }
 
         @media (max-width: 800px) {

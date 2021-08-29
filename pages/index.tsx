@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import Nav from 'components/nav';
 import Page from 'components/page';
 
 import AcknowledgingApplause from 'assets/acknowledging-applause.jpg';
@@ -47,7 +46,6 @@ export default function Home(): JSX.Element {
             </h3>
           </header>
         </section>
-        <Nav />
       </main>
       <style jsx>{`
         section.hero {
@@ -55,7 +53,8 @@ export default function Home(): JSX.Element {
           background-color: var(--background);
           padding: 0;
           margin: 0;
-          min-height: calc(100vh - 36px);
+          min-height: 100vh;
+          margin-bottom: -2rem;
           width: 100%;
           display: flex;
           align-items: center;
@@ -80,9 +79,9 @@ export default function Home(): JSX.Element {
         }
 
         section.hero h1 {
-          font-size: 8rem;
+          font-size: 6rem;
           font-weight: 900;
-          letter-spacing: -0.35rem;
+          letter-spacing: -0.25rem;
           text-transform: uppercase;
           line-height: 0.85;
           margin: 3rem 0;
