@@ -65,10 +65,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           color: var(--on-background);
         }
 
-        h1, h2, h3, h4, h5, h6 {
-          font-family: var(--font-serif);
-        }
-
         h2 {
           font-size: 1.2rem;
           margin: 1rem 0;
