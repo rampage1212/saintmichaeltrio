@@ -37,7 +37,9 @@ export default function Header(): JSX.Element {
 
         a.header > h1 {
           font-size: 2.5rem;
-          font-weight: 400;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: -0.05rem;
           text-align: center;
           margin: 1rem 0;
         }
