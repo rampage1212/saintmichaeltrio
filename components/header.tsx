@@ -22,6 +22,7 @@ export default function Header(): JSX.Element {
 
         a {
           text-decoration: none;
+          transition: none;
           color: var(--on-background);
         }
 
