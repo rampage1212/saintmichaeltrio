@@ -52,13 +52,8 @@ export default function NavLink({
         a {
           display: block;
           font-size: var(--link-size);
-          color: var(--accents-3);
+          line-height: 24px;
           padding: 0.5rem 0;
-        }
-
-        a:hover,
-        a.active {
-          color: var(--background);
         }
 
         @media (max-width: 800px) {

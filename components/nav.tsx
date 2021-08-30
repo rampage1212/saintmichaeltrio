@@ -10,6 +10,7 @@ export interface NavProps {
 export default function Nav({ active, setActive }: NavProps): JSX.Element {
   return (
     <nav>
+      <div className='scrim' />
       <ul>
         <div className='bar' />
         <NavLink href='/' setActive={setActive}>
@@ -36,16 +37,27 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
       </ul>
       <style jsx>{`
         nav {
-          box-shadow: 0 -1px 24px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0 -1px var(--accents-2);
+          backdrop-filter: saturate(180%) blur(2px);
           display: flex;
           align-items: center;
           font-family: var(--font-sans);
-          background: var(--on-background);
           position: fixed;
           z-index: 4;
-          bottom: 0;
+          top: 0;
           left: 0;
           right: 0;
+        }
+
+        .scrim {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 1px;
+          width: 100%;
+          background: var(--background);
+          opacity: 0.85;
         }
 
         ul {
@@ -59,7 +71,7 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
 
         .bar {
           height: 2px;
-          background: var(--background);
+          background: var(--on-background);
           position: absolute;
           left: 9px;
           bottom: 0;

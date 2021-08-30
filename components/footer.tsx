@@ -200,7 +200,7 @@ export default function Footer(): JSX.Element {
         footer {
           background: var(--accents-1);
           border-top: 1px solid var(--accents-2);
-          padding: 1.5rem 1rem 3rem;
+          padding: 1.5rem 1rem 0.5rem;
           margin-top: 2rem;
         }
 

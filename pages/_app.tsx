@@ -33,8 +33,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <NProgress />
-      <Component {...pageProps} />
       <Nav active={active} setActive={setActive} />
+      <Component {...pageProps} />
       <style jsx global>{`
         ::selection {
           background-color: var(--selection);
@@ -97,7 +97,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           transition: color 0.2s ease 0s;
         }
 
-        a:hover {
+        a:hover,
+        a.active {
           color: var(--on-background);
         }
 
