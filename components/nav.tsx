@@ -69,7 +69,7 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
           left: 0;
           right: 0;
           opacity: 0;
-          transition: top 0.1s ease 0s, opacity 0.1s ease 0s;
+          transition: top 0.2s ease 0s, opacity 0.2s ease 0s;
         }
 
         nav.visible {
