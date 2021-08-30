@@ -6,6 +6,8 @@ import Nav from 'components/nav';
 
 import { Theme, ThemeContext } from 'lib/theme';
 
+import 'fonts.css';
+
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const [theme, setTheme] = useState<Theme>('system');
   useEffect(() => {

@@ -11,10 +11,19 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head>
-          <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
-            href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional'
-            rel='stylesheet'
+            rel='preload'
+            href='/fonts/inter-var-latin.woff2'
+            crossOrigin='anonymous'
+            type='font/woff2'
+            as='font'
+          />
+          <link
+            rel='preload'
+            href='/fonts/inter-var-latin-ext.woff2'
+            crossOrigin='anonymous'
+            type='font/woff2'
+            as='font'
           />
         </Head>
         <body>
