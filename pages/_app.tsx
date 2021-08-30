@@ -6,8 +6,6 @@ import Nav from 'components/nav';
 
 import { Theme, ThemeContext } from 'lib/theme';
 
-import 'styles/fonts.css';
-
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const [theme, setTheme] = useState<Theme>('system');
   useEffect(() => {
@@ -107,7 +105,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       `}</style>
       <style jsx global>{`
         :root {
-          --font-serif: valkyrie_a, 'Georgia', 'Times New Roman', serif;
           --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
             'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
             'Helvetica Neue', sans-serif;
