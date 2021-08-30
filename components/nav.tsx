@@ -33,7 +33,7 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
     <nav className={cn({ visible })}>
       <div className='scrim' />
       <ul>
-        <div className='bar' />
+        {!!active.width && <div className='bar' />}
         <NavLink href='/' setActive={setActive}>
           Home
         </NavLink>
@@ -103,9 +103,8 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
           position: absolute;
           left: 9px;
           bottom: 0;
-          transition: 0.15s ease;
+          transition: 150ms ease;
           transition-property: width, transform;
-          transition-duration: 150ms;
           transform: translateX(${active.x - 8}px);
           width: ${active.width}px;
         }
