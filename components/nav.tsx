@@ -1,3 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
+import cn from 'classnames';
+
 import NavLink from 'components/nav-link';
 
 import { Callback } from 'lib/callback';
@@ -8,8 +11,26 @@ export interface NavProps {
 }
 
 export default function Nav({ active, setActive }: NavProps): JSX.Element {
+  const [visible, setVisible] = useState<boolean>(true);
+  const lastScrollPosition = useRef<number>(0);
+
+  useEffect(() => {
+    function handleScroll(): void {
+      const currentScrollPosition = window.pageYOffset;
+      const prevScrollPosition = lastScrollPosition.current;
+      lastScrollPosition.current = currentScrollPosition;
+      setVisible(() => {
+        const scrolledUp = currentScrollPosition < prevScrollPosition;
+        const scrolledToTop = currentScrollPosition < 10;
+        return scrolledUp || scrolledToTop;
+      });
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav>
+    <nav className={cn({ visible })}>
       <div className='scrim' />
       <ul>
         <div className='bar' />
@@ -44,9 +65,16 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
           font-family: var(--font-sans);
           position: fixed;
           z-index: 4;
-          top: 0;
+          top: -20px;
           left: 0;
           right: 0;
+          opacity: 0;
+          transition: top 0.1s ease 0s, opacity 0.1s ease 0s;
+        }
+
+        nav.visible {
+          opacity: 1;
+          top: 0;
         }
 
         .scrim {
