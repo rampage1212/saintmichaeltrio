@@ -5,9 +5,6 @@ const themeSnippet = `document.documentElement.classList.add(localStorage.getIte
 // Prevent FOUC on Firefox due to an age-old script processing bug.
 // @see {@link https://nextjs.org/docs/advanced-features/custom-document}
 // @see {@link https://github.com/vercel/next.js/issues/22465}
-
-// Also, address the Next.js ESLint warning about custom fonts not here.
-// @see {@link https://nextjs.org/docs/messages/no-page-custom-font}
 export default class Document extends NextDocument {
   public render(): JSX.Element {
     return (
