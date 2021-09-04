@@ -1,5 +1,7 @@
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
+const themeSnippet = `document.documentElement.classList.add(localStorage.getItem('theme') || 'system');`;
+
 // Prevent FOUC on Firefox due to an age-old script processing bug.
 // @see {@link https://nextjs.org/docs/advanced-features/custom-document}
 // @see {@link https://github.com/vercel/next.js/issues/22465}
@@ -27,7 +29,7 @@ export default class Document extends NextDocument {
           />
         </Head>
         <body>
-          <script>0</script>
+          <script dangerouslySetInnerHTML={{ __html: themeSnippet }} />
           <Main />
           <NextScript />
         </body>
