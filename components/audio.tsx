@@ -173,7 +173,7 @@ export default function Audio({
           bottom: 0;
           width: 100%;
           background: var(--background);
-          opacity: 0.85;
+          opacity: 0.98;
           z-index: -1;
         }
 

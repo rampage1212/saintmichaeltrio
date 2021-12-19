@@ -150,7 +150,7 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
           bottom: 1px;
           width: 100%;
           background: var(--background);
-          opacity: 0.85;
+          opacity: 0.98;
           z-index: -1;
         }
 
