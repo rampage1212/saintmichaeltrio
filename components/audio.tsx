@@ -24,6 +24,10 @@ export default function Audio({
   const lastScrollPosition = useRef<number>(0);
 
   useEffect(() => {
+    const timeoutId = setTimeout(() => setVisible(true), 2000);
+    return () => clearTimeout(timeoutId);
+  }, []);
+  useEffect(() => {
     function handleScroll(): void {
       const currentScrollPosition = window.pageYOffset;
       const prevScrollPosition = lastScrollPosition.current;
