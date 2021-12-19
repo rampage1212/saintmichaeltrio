@@ -1,8 +1,10 @@
 import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
 
+import MusicOfAmericas from 'photos/albums/music-of-americas.jpg';
+
 import { secondsToTimestamp, toggleSelection } from 'components/video';
-import FullScreenIcon from 'components/icons/full-screen';
 import PauseIcon from 'components/icons/pause';
 import PlayIcon from 'components/icons/play';
 
@@ -47,6 +49,20 @@ export default function Audio({
       setPlaying(false);
     }
   }, []);
+
+  useEffect(() => {
+    function handleSpaceBar(e: KeyboardEvent): boolean {
+      if (e.key !== ' ') return true;
+      console.log('Toggling playback...');
+      setVisible(true);
+      void togglePlayback();
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+    window.addEventListener('keypress', handleSpaceBar);
+    return () => window.removeEventListener('keypress', handleSpaceBar);
+  }, [togglePlayback]);
 
   const [progress, setProgress] = useState<number>(0);
   const [dragging, setDragging] = useState<boolean>(false);
@@ -94,75 +110,89 @@ export default function Audio({
   return (
     <figure className={cn({ visible })}>
       <div className='scrim' />
-      <figcaption>Music of the Americas - Cristal</figcaption>
-      <audio
-        id={audioId}
-        onTimeUpdate={updateProgress}
-        onDurationChange={updateProgress}
-        autoPlay={autoplay}
-        preload='auto'
-        playsInline
-        loop={loop}
-        src={src}
-        ref={ref}
-      >
-        <track kind='captions' />
-      </audio>
-      <div className='controls'>
-        <button className='play' type='button' onClick={togglePlayback}>
-          {playing && <PauseIcon />}
-          {!playing && <PlayIcon />}
-        </button>
-        <div className='time'>
-          {secondsToTimestamp(ref.current?.currentTime || 0)}
+      <div className='left'>
+        <Image
+          src={MusicOfAmericas}
+          alt='Music of Americas Album Cover'
+          placeholder='blur'
+          height={72}
+          width={72}
+          priority
+        />
+      </div>
+      <div className='right'>
+        <figcaption className='nowrap'>
+          Music of the Americas - Cristal - Lorem Ipsum Dolor Plumbus
+        </figcaption>
+        <audio
+          id={audioId}
+          onTimeUpdate={updateProgress}
+          onDurationChange={updateProgress}
+          autoPlay={autoplay}
+          preload='auto'
+          playsInline
+          loop={loop}
+          src={src}
+          ref={ref}
+        >
+          <track kind='captions' />
+        </audio>
+        <div className='controls'>
+          <button className='play' type='button' onClick={togglePlayback}>
+            {playing && <PauseIcon />}
+            {!playing && <PlayIcon />}
+          </button>
+          <div className='time'>
+            {secondsToTimestamp(ref.current?.currentTime || 0)}
+          </div>
+          <div className='progress'>
+            <div
+              onMouseUp={endDrag}
+              onMouseLeave={endDrag}
+              onMouseDown={startDrag}
+              onMouseMove={updateDrag}
+              className='drag-handler'
+              role='scrollbar'
+              aria-label='Scroll audio'
+              aria-controls={audioId}
+              aria-valuemin={0}
+              aria-valuenow={progress * 100}
+              aria-valuemax={100}
+              tabIndex={-1}
+            />
+            <progress value={progress * 100} max='100' />
+            <div style={{ left: `${progress * 100}%` }} className='handle' />
+          </div>
+          <div className='time'>
+            {secondsToTimestamp(ref.current?.duration || 0)}
+          </div>
         </div>
-        <div className='progress'>
-          <div
-            onMouseUp={endDrag}
-            onMouseLeave={endDrag}
-            onMouseDown={startDrag}
-            onMouseMove={updateDrag}
-            className='drag-handler'
-            role='scrollbar'
-            aria-label='Scroll audio'
-            aria-controls={audioId}
-            aria-valuemin={0}
-            aria-valuenow={progress * 100}
-            aria-valuemax={100}
-            tabIndex={-1}
-          />
-          <progress value={progress * 100} max='100' />
-          <div style={{ left: `${progress * 100}%` }} className='handle' />
-        </div>
-        <div className='time'>
-          {secondsToTimestamp(ref.current?.duration || 0)}
-        </div>
-        <button className='fullscreen' type='button'>
-          <FullScreenIcon />
-        </button>
       </div>
       <style jsx>{`
         figure {
-          display: block;
           text-align: center;
           position: fixed;
-          bottom: 24px;
-          right: 24px;
+          bottom: 12px;
+          right: 12px;
           z-index: 4;
           border-radius: 5px;
           border: 1px solid var(--accents-2);
           backdrop-filter: saturate(180%) blur(2px);
-          padding: 4px;
+          padding: 12px;
           margin: 0;
           opacity: 0;
           overflow: hidden;
           transform: translate3d(0, 6px, 0);
           transition: all 0.2s cubic-bezier(0.25, 0.57, 0.45, 0.94);
+          pointer-events: none;
+          display: flex;
+          min-width: 330px;
         }
 
         figure.visible {
           opacity: 1;
           transform: translateZ(0);
+          pointer-events: unset;
         }
 
         .scrim {
@@ -177,11 +207,29 @@ export default function Audio({
           z-index: -1;
         }
 
+        .left {
+          font-size: 0;
+          margin-right: 12px;
+        }
+
+        .left > :global(div) {
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+          background-color: var(--accents-1);
+        }
+
+        .right {
+          flex: 1 1 0;
+          width: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
         figcaption {
           font-size: 0.9rem;
-          font-style: italic;
-          color: var(--accents-5);
-          margin-top: 8px;
+          padding: 0 6px 2px;
+          width: 100%;
         }
 
         div.controls div {
@@ -197,22 +245,23 @@ export default function Audio({
         }
 
         div.controls {
-          height: 40px;
+          height: 24px;
           display: flex;
           align-items: center;
+          width: 100%;
         }
 
         button.play {
           background: transparent;
           border: 0;
-          height: 40px;
-          width: 40px;
+          height: 24px;
+          width: 24px;
           display: flex;
           justify-content: center;
           align-items: center;
           outline: 0;
           cursor: pointer;
-          flex: 0 0 40px;
+          flex: none;
           padding: 0;
         }
 
@@ -221,7 +270,6 @@ export default function Audio({
           display: flex;
           align-items: center;
           flex: 1 0 auto;
-          min-width: 96px;
         }
 
         div.controls progress {
@@ -247,71 +295,40 @@ export default function Audio({
           pointer-events: none;
         }
 
-        div.controls div.progress div.thumb {
-          position: absolute;
-          background: var(--on-background);
-          box-shadow: 0 4px 9px rgba(0, 0, 0, 0.12);
-          transform: translate3d(0, 40px, 0) scale(0.8, 0);
-          pointer-events: none;
-          opacity: 0;
-          background-size: cover;
-        }
-
         @media (hover: hover) {
           div.controls div.progress:hover div.handle {
             transform: translateX(-4px) translateY(1px) scale(1);
-          }
-
-          div.controls div.progress div.drag-handler:hover ~ div.thumb {
-            transform: translateZ(0) scaleY(0);
-            opacity: 1;
           }
         }
 
         div.controls div.time {
           font-size: 12px;
           font-weight: 600;
-          line-height: 40px;
-          padding: 0 12px;
+          line-height: 24px;
+          padding: 0 8px;
           flex: 0 0 auto;
-          width: 60px;
+          width: 48px;
+        }
+
+        div.controls div.time:last-child {
+          padding-right: 0;
         }
 
         button.play + div.time {
           padding-left: 0;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 450px) {
           figure {
             opacity: 1;
             transform: translateZ(0) scaleY(0);
+            left: 12px;
           }
 
           div.drag-handler {
             height: 18px;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
           }
-        }
-
-        @media (max-width: 480px) {
-          .thumb {
-            display: none;
-          }
-        }
-
-        button.fullscreen {
-          color: var(--on-background);
-          background: transparent;
-          border: 0;
-          height: 40px;
-          width: 40px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          outline: 0;
-          cursor: pointer;
-          flex: 0 0 40px;
-          padding: 0;
         }
 
         div.drag-handler {

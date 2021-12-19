@@ -147,6 +147,12 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           margin-top: 0;
         }
 
+        .nowrap {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
         p {
           margin: 1rem 0;
         }
