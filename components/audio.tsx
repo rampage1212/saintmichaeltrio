@@ -232,6 +232,7 @@ export default function Audio({
         figcaption {
           font-size: 0.9rem;
           padding: 0 6px 2px;
+          margin-top: 2px;
           width: 100%;
         }
 
