@@ -53,7 +53,6 @@ export default function Audio({
   useEffect(() => {
     function handleSpaceBar(e: KeyboardEvent): boolean {
       if (e.key !== ' ') return true;
-      console.log('Toggling playback...');
       setVisible(true);
       void togglePlayback();
       e.preventDefault();
