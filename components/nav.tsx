@@ -86,6 +86,7 @@ export default function Nav({ active, setActive }: NavProps): JSX.Element {
           width: 100%;
           background: var(--background);
           opacity: 0.85;
+          z-index: -1;
         }
 
         ul {

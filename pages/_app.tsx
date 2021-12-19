@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 
+import Audio from 'components/audio';
 import NProgress from 'components/nprogress';
 import Nav from 'components/nav';
 
@@ -92,6 +93,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <NProgress />
+      <Audio />
       <Nav active={active} setActive={setActive} />
       <Component {...pageProps} />
       <style jsx global>{`
@@ -163,6 +165,14 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
 
         a.active {
           cursor: not-allowed;
+        }
+
+        progress[value]::-webkit-progress-bar {
+          background-color: var(--accents-2);
+        }
+
+        progress[value]::-webkit-progress-value {
+          background-color: var(--on-background);
         }
       `}</style>
       <style jsx global>{`

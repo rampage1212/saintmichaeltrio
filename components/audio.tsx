@@ -1,62 +1,40 @@
 import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
+import { secondsToTimestamp, toggleSelection } from 'components/video';
 import FullScreenIcon from 'components/icons/full-screen';
 import PauseIcon from 'components/icons/pause';
 import PlayIcon from 'components/icons/play';
 
-/**
- * Pads a given number with leading zeros until it reaches a certain length.
- * @param num - The number to pad.
- * @param size - The desired number of digits.
- * @return The padded number. Note that if the given `num` already has a length
- * equal to or greater than the requested `size`, nothing will happen.
- * @see {@link https://stackoverflow.com/a/2998822}
- */
-export function pad(num: number, size: number): string {
-  let str = num.toString();
-  while (str.length < size) str = `0${str}`;
-  return str;
-}
-
-/**
- * Converts milliseconds to a readable timestamp.
- * @param seconds - The seconds to convert into a timestamp.
- * @return The formatted timestamp (MM:SS).
- * @example
- * secondsToTimestamp(24.78); // Returns '00:25'
- */
-export function secondsToTimestamp(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.round(seconds % 60);
-  return `${pad(mins, 2)}:${pad(secs, 2)}`;
-}
-
-export function toggleSelection(value: string): void {
-  const style = document.body.style as unknown as Record<string, string>;
-  style['user-select'] = value;
-  style['-webkit-user-select'] = value;
-  style['-moz-user-select'] = value;
-  style['-ms-user-select'] = value;
-}
-
-export interface VideoProps {
+export interface AudioProps {
   src: string;
-  children: string;
   autoplay?: boolean;
   loop?: boolean;
 }
 
-export default function Video({
-  src,
-  children,
+export default function Audio({
+  src = '/albums/america/01 - Cristal.mp3',
   autoplay,
   loop,
-}: VideoProps): JSX.Element {
-  const ref = useRef<HTMLVideoElement>(null);
+}: AudioProps): JSX.Element {
+  const ref = useRef<HTMLAudioElement>(null);
   const [visible, setVisible] = useState<boolean>(false);
-  const onEnter = useCallback(() => setVisible(true), []);
-  const onLeave = useCallback(() => setVisible(false), []);
+  const lastScrollPosition = useRef<number>(0);
+
+  useEffect(() => {
+    function handleScroll(): void {
+      const currentScrollPosition = window.pageYOffset;
+      const prevScrollPosition = lastScrollPosition.current;
+      lastScrollPosition.current = currentScrollPosition;
+      setVisible(() => {
+        const scrolledUp = currentScrollPosition < prevScrollPosition;
+        const scrolledToTop = currentScrollPosition < 10;
+        return scrolledUp || scrolledToTop;
+      });
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const [playing, setPlaying] = useState<boolean>(autoplay || false);
   const togglePlayback = useCallback(async () => {
@@ -68,10 +46,6 @@ export default function Video({
       ref.current.pause();
       setPlaying(false);
     }
-  }, []);
-
-  const toggleFullscreen = useCallback(async () => {
-    if (ref.current) await ref.current.requestFullscreen();
   }, []);
 
   const [progress, setProgress] = useState<number>(0);
@@ -115,137 +89,117 @@ export default function Video({
     [updateDrag]
   );
 
-  const videoId = `${src.split('/').pop() as string}-video`;
+  const audioId = `${src.split('/').pop() as string}-audio`;
 
   return (
-    <figure>
-      <div className='video' onMouseEnter={onEnter} onMouseLeave={onLeave}>
-        <div className='container'>
-          <video
-            id={videoId}
-            onTimeUpdate={updateProgress}
-            onDurationChange={updateProgress}
-            autoPlay={autoplay}
-            preload='auto'
-            playsInline
-            loop={loop}
-            src={src}
-            ref={ref}
-          >
-            <track kind='captions' />
-          </video>
-          <div className={cn('controls', { visible })}>
-            <button className='play' type='button' onClick={togglePlayback}>
-              {playing && <PauseIcon />}
-              {!playing && <PlayIcon />}
-            </button>
-            <div className='time'>
-              {secondsToTimestamp(ref.current?.currentTime || 0)}
-            </div>
-            <div className='progress'>
-              <div
-                onMouseUp={endDrag}
-                onMouseLeave={endDrag}
-                onMouseDown={startDrag}
-                onMouseMove={updateDrag}
-                className='drag-handler'
-                role='scrollbar'
-                aria-label='Scroll video'
-                aria-controls={videoId}
-                aria-valuemin={0}
-                aria-valuenow={progress * 100}
-                aria-valuemax={100}
-                tabIndex={-1}
-              />
-              <progress value={progress * 100} max='100' />
-              <div style={{ left: `${progress * 100}%` }} className='handle' />
-            </div>
-            <div className='time'>
-              {secondsToTimestamp(ref.current?.duration || 0)}
-            </div>
-            <button
-              className='fullscreen'
-              type='button'
-              onClick={toggleFullscreen}
-            >
-              <FullScreenIcon />
-            </button>
-          </div>
+    <figure className={cn({ visible })}>
+      <div className='scrim' />
+      <figcaption>Music of the Americas - Cristal</figcaption>
+      <audio
+        id={audioId}
+        onTimeUpdate={updateProgress}
+        onDurationChange={updateProgress}
+        autoPlay={autoplay}
+        preload='auto'
+        playsInline
+        loop={loop}
+        src={src}
+        ref={ref}
+      >
+        <track kind='captions' />
+      </audio>
+      <div className='controls'>
+        <button className='play' type='button' onClick={togglePlayback}>
+          {playing && <PauseIcon />}
+          {!playing && <PlayIcon />}
+        </button>
+        <div className='time'>
+          {secondsToTimestamp(ref.current?.currentTime || 0)}
         </div>
+        <div className='progress'>
+          <div
+            onMouseUp={endDrag}
+            onMouseLeave={endDrag}
+            onMouseDown={startDrag}
+            onMouseMove={updateDrag}
+            className='drag-handler'
+            role='scrollbar'
+            aria-label='Scroll audio'
+            aria-controls={audioId}
+            aria-valuemin={0}
+            aria-valuenow={progress * 100}
+            aria-valuemax={100}
+            tabIndex={-1}
+          />
+          <progress value={progress * 100} max='100' />
+          <div style={{ left: `${progress * 100}%` }} className='handle' />
+        </div>
+        <div className='time'>
+          {secondsToTimestamp(ref.current?.duration || 0)}
+        </div>
+        <button className='fullscreen' type='button'>
+          <FullScreenIcon />
+        </button>
       </div>
-      <figcaption>{children}</figcaption>
       <style jsx>{`
         figure {
           display: block;
           text-align: center;
-          margin: 2rem auto;
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 4;
+          border-radius: 5px;
+          border: 1px solid var(--accents-2);
+          backdrop-filter: saturate(180%) blur(2px);
+          padding: 4px;
+          margin: 0;
+          opacity: 0;
+          overflow: hidden;
+          transform: translate3d(0, 6px, 0);
+          transition: all 0.2s cubic-bezier(0.25, 0.57, 0.45, 0.94);
+        }
+
+        figure.visible {
+          opacity: 1;
+          transform: translateZ(0);
+        }
+
+        .scrim {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          background: var(--background);
+          opacity: 0.85;
+          z-index: -1;
         }
 
         figcaption {
           font-size: 0.9rem;
           font-style: italic;
-          margin-top: 1rem;
           color: var(--accents-5);
-        }
-
-        div.video {
-          margin: 0 auto;
-          max-width: 100%;
-          position: relative;
-          font-family: var(--font-sans);
-          border: 1px solid var(--accents-2);
+          margin-top: 8px;
         }
 
         div.controls div {
           position: relative;
         }
 
-        video {
-          height: 100%;
-          left: 0;
+        audio {
           position: absolute;
+          left: 0;
           top: 0;
-          width: 100%;
-          cursor: pointer;
-        }
-
-        video:-webkit-full-screen {
-          width: 100%;
-          height: 100%;
-          max-height: 100%;
-          z-index: 99999999;
-        }
-
-        div.container {
-          display: flex;
-          justify-content: center;
-          padding-bottom: calc(100% / 16 * 9);
-          background-color: black;
+          height: 0;
+          width: 0;
         }
 
         div.controls {
-          position: absolute;
-          bottom: 5%;
-          background: var(--background);
           height: 40px;
           display: flex;
           align-items: center;
-          padding: 0 8px;
-          opacity: 0;
-          width: 85%;
-          transform: translate3d(0, 6px, 0);
-          transition: all 0.2s cubic-bezier(0.25, 0.57, 0.45, 0.94);
-        }
-
-        div.controls.wide {
-          width: 94.5%;
-        }
-
-        div.controls.visible {
-          opacity: 1;
-          transform: translateZ(0);
-          box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
-          display: flex;
         }
 
         button.play {
@@ -267,6 +221,7 @@ export default function Video({
           display: flex;
           align-items: center;
           flex: 1 0 auto;
+          min-width: 96px;
         }
 
         div.controls progress {
@@ -327,7 +282,7 @@ export default function Video({
         }
 
         @media (max-width: 992px) {
-          div.controls {
+          figure {
             opacity: 1;
             transform: translateZ(0) scaleY(0);
           }
