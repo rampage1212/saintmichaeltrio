@@ -2,10 +2,10 @@ import Image from 'next/image';
 
 import Page from 'components/page';
 
-import Debut from 'assets/albums/debut.jpg';
-import FrenchFusion from 'assets/albums/french-fusion.jpg';
-import MusicOfAmericas from 'assets/albums/music-of-americas.jpg';
-import Warning from 'assets/albums/warning.jpg';
+import Debut from 'photos/albums/debut.jpg';
+import FrenchFusion from 'photos/albums/french-fusion.jpg';
+import MusicOfAmericas from 'photos/albums/music-of-americas.jpg';
+import Warning from 'photos/albums/warning.jpg';
 
 interface AlbumLinkProps {
   href: string;
@@ -49,7 +49,7 @@ interface Review {
 }
 
 interface AlbumProps {
-  cover: { src: string; height: number; width: number };  
+  cover: { src: string; height: number; width: number };
   priority?: boolean;
   title: string;
   amazon?: string;
@@ -60,7 +60,17 @@ interface AlbumProps {
   description: string;
 }
 
-function Album({ cover, priority, title, amazon, itunes, spotify, youtube, reviews, description }: AlbumProps): JSX.Element {
+function Album({
+  cover,
+  priority,
+  title,
+  amazon,
+  itunes,
+  spotify,
+  youtube,
+  reviews,
+  description,
+}: AlbumProps): JSX.Element {
   return (
     <li>
       <div className='wrapper'>
@@ -80,7 +90,9 @@ function Album({ cover, priority, title, amazon, itunes, spotify, youtube, revie
           {reviews.map(({ qoute, cite }) => (
             <figure key={cite.toLowerCase().split(' ').join('-')}>
               <blockquote>{qoute}</blockquote>
-              <figcaption>—<cite>{cite}</cite></figcaption>
+              <figcaption>
+                —<cite>{cite}</cite>
+              </figcaption>
             </figure>
           ))}
           {spotify && <AlbumLink href={spotify}>Spotify</AlbumLink>}
@@ -107,7 +119,7 @@ function Album({ cover, priority, title, amazon, itunes, spotify, youtube, revie
         .album {
           flex: none;
           width: 360px;
-          margin-right: 1.25rem
+          margin-right: 1.25rem;
         }
 
         .album > :global(div:first-child) {
@@ -160,7 +172,8 @@ export default function Albums(): JSX.Element {
             description='Saint Mike’s 4th album celebrates music of the western hemisphere: Argentinian tangos! Brazilian jazz! Canadian panache and more! David Rokeach (drums), Pat Klobas (bass) and Gene Burkert (saxophone) add zest on select tracks.'
             reviews={[
               {
-                qoute: 'They\'re a disruptively hip combo with an old-school name. Only a very few trios out there can undertake music such as this, but Saint Mike has swallowed it whole.',
+                qoute:
+                  "They're a disruptively hip combo with an old-school name. Only a very few trios out there can undertake music such as this, but Saint Mike has swallowed it whole.",
                 cite: 'Glen Roven, Emmy-winning composer',
               },
             ]}
@@ -176,12 +189,14 @@ export default function Albums(): JSX.Element {
             description='In their third album, the Saint Michael Trio are joined by David Rokeach (drums) and Pat Klobas (bass) for a romp through the fusion jazz of French legend Claude Bolling.'
             reviews={[
               {
-                qoute: "It's a frenchified style of California cooking that's fabulous. It's lyricism and verve delivered by a boy band that has become the musical embodiment of Silicon Valley.",
-                cite: "David Benoit, Jazz great",
+                qoute:
+                  "It's a frenchified style of California cooking that's fabulous. It's lyricism and verve delivered by a boy band that has become the musical embodiment of Silicon Valley.",
+                cite: 'David Benoit, Jazz great',
               },
               {
-                qoute: "The Saint Michael Trio has brought a wonderful new dimension to my music.",
-                cite: "Claude Bolling",
+                qoute:
+                  'The Saint Michael Trio has brought a wonderful new dimension to my music.',
+                cite: 'Claude Bolling',
               },
             ]}
           />
@@ -195,16 +210,17 @@ export default function Albums(): JSX.Element {
             description='In their second album Saint Mike messes with your moods, alternating spunky, witty repertoire with music that is poignant or plaintive.'
             reviews={[
               {
-                qoute: "This is music that grabs you by the throat. Saint Mike will make you laugh, and then do something so deep or profound it will have you staring into the distance, shaking off shivers.",
-                cite: "Angela McConnell, Montalvo",
+                qoute:
+                  'This is music that grabs you by the throat. Saint Mike will make you laugh, and then do something so deep or profound it will have you staring into the distance, shaking off shivers.',
+                cite: 'Angela McConnell, Montalvo',
               },
               {
-                qoute: "This is not your regular trio.",
-                cite: "Audiophile",
+                qoute: 'This is not your regular trio.',
+                cite: 'Audiophile',
               },
               {
-                qoute: "These guys are good. Very good.",
-                cite: "Fanfare Magazine",
+                qoute: 'These guys are good. Very good.',
+                cite: 'Fanfare Magazine',
               },
             ]}
           />
@@ -218,11 +234,13 @@ export default function Albums(): JSX.Element {
             description='Saint Mike’s debut album is a tour de force of the classical repertoire—Mendelssohn, Brahms, Debussy and more.'
             reviews={[
               {
-                qoute: 'There’s a new sound coming out of Silicon Valley. Call them Silicon Valley’s hot new sensation—if these guys were a company I’d buy stock.',
+                qoute:
+                  'There’s a new sound coming out of Silicon Valley. Call them Silicon Valley’s hot new sensation—if these guys were a company I’d buy stock.',
                 cite: 'Sal Pizarro, San Jose Mercury News',
               },
               {
-                qoute: 'This new trio is a top-flight professional ensemble, with playing that is equal to—and in some cases surpasses—the celebrated piano trio ensembles.',
+                qoute:
+                  'This new trio is a top-flight professional ensemble, with playing that is equal to—and in some cases surpasses—the celebrated piano trio ensembles.',
                 cite: 'Fanfare Magazine',
               },
             ]}

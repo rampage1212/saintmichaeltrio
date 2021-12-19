@@ -1,8 +1,8 @@
 import Figure from 'components/figure';
 import Page from 'components/page';
 
-import AcknowledgingApplause from 'assets/acknowledging-applause.jpg';
-import Informance from 'assets/informance.png';
+import AcknowledgingApplause from 'photos/acknowledging-applause.jpg';
+import Informance from 'photos/informance.png';
 
 export default function About(): JSX.Element {
   return (

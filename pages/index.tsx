@@ -2,11 +2,11 @@ import Image from 'next/image';
 
 import Page from 'components/page';
 
-import Applause from 'assets/acknowledging-applause.jpg';
-import Gala13 from 'assets/gala-13-setting-show-from-far-away.jpg';
-import Gala14 from 'assets/gala-14.jpg';
-import Gala9 from 'assets/gala-9-robin-and-michael.jpg';
-import GalaPointingUp from 'assets/gala-10-pointing-up.jpg';
+import Applause from 'photos/acknowledging-applause.jpg';
+import Gala13 from 'photos/gala-13-setting-show-from-far-away.jpg';
+import Gala14 from 'photos/gala-14.jpg';
+import Gala9 from 'photos/gala-9-robin-and-michael.jpg';
+import GalaPointingUp from 'photos/gala-10-pointing-up.jpg';
 
 const duration = 4;
 const images = [Gala13, Gala14, Gala9, GalaPointingUp, Applause];
