@@ -9,7 +9,7 @@ import PauseIcon from 'components/icons/pause';
 import PlayIcon from 'components/icons/play';
 
 export interface AudioProps {
-  src: string;
+  src?: string;
   autoplay?: boolean;
   loop?: boolean;
 }
