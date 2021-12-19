@@ -2,11 +2,11 @@ import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 
-import MusicOfAmericas from 'photos/albums/music-of-americas.jpg';
-
 import { secondsToTimestamp, toggleSelection } from 'components/video';
 import PauseIcon from 'components/icons/pause';
 import PlayIcon from 'components/icons/play';
+
+import MusicOfAmericas from 'photos/albums/music-of-americas.jpg';
 
 export interface AudioProps {
   src?: string;

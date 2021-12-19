@@ -180,7 +180,7 @@ module.exports = {
             position: 'after',
           },
           {
-            pattern: 'assets/**',
+            pattern: 'photos/**',
             group: 'internal',
             position: 'after',
           },
